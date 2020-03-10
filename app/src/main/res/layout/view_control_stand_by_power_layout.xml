@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/Stand_Lin_List_Item_Parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer_list_shadow_radius_on"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:weightSum="100">
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"></LinearLayout>
+
+            <TextView
+                android:id="@+id/Stand_Txt_List_Item_Title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:gravity="center_vertical"
+                android:textSize="16dp"
+                android:textColor="@color/colorBlack"
+                android:text="@string/control_detail_title"/>
+
+            <Switch
+                android:id="@+id/Stand_Swh_List_Item"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:thumb="@drawable/switch_thumb_selector"
+                android:track="@drawable/switch_track_selector"
+                android:checked="false"/>
+
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fafafa"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Stand_Lin_List_Item_Visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Standbypower_textview_auto_break_value"
+                        android:textColor="@color/colorb8b8b8"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" "/>
+                    <TextView
+                        android:id="@+id/Stand_Txt_List_Item_Block"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" -"
+                        android:textColor="@color/colorb8b8b8"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Standbypower_textview_unit"
+                        android:textColor="@color/colorb8b8b8"
+                        android:textSize="20dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Standbypower_textview_now_usage_value"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=" "/>
+
+                    <TextView
+                        android:id="@+id/Stand_Txt_List_Item_Usage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" -"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Standbypower_textview_unit"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/Stand_Txt_List_Item_Status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:gravity="center"
+                    android:textColor="#f2bc51"
+                    android:text="@string/Standbypower_textview_block_out"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"></LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/Stand_Btn_List_Item_Auto"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/shape_stroke_corner_50dp"
+                android:text="@string/Standbypower_btn_block"
+                android:textColor="@color/colorWhite"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"></LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="8dp"></LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@color/colorWhite"
+        android:elevation="0.5dp">
+
+        <LinearLayout
+            android:layout_width="16dp"
+            android:layout_height="wrap_content"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Gas_Lin_Home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="OnClickBtnGas">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_back"
+                android:tint="@color/colorPrimary"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/Activity_Name_Controll"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/Gas_title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:visibility="invisible"></LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/Activity_Name_Controll"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/Gas_Btn_Menu"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@drawable/selector_btn_list"
+            android:onClick="OnClickBtnGas"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorfafafa">
+        <LinearLayout
+            android:layout_width="16dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="12dp"
+            android:textColor="@color/colorBlack"
+            android:text="가스를 제어할 수 있습니다."/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/Gas_Lin_List_Parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"></LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

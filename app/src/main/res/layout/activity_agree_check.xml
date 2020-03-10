@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login.AgreeCheckActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:elevation="0.5dp"
+            android:background="@color/colorWhite">
+
+            <LinearLayout
+                android:id="@+id/linear_agree_check_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="16dp"
+                    android:src="@drawable/ic_back"
+                    android:tint="@color/colorPrimary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/Activity_Back"
+                    android:textSize="18dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="100"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/shape_stroke_corner_05px"
+                    android:backgroundTint="@color/colorb8b8b8"
+                    android:gravity="center">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:weightSum="1"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginLeft="12dp">
+
+                        <CheckBox
+                            android:id="@+id/Regist_Chb_agree_all"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:text="@string/Agree_check_all"
+                            android:button="@drawable/selector_check_box"
+                            android:paddingLeft="9dp"
+                            android:textColor="@color/colorb8b8b8"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/shape_stroke_corner_05px"
+                    android:backgroundTint="@color/colorb8b8b8"
+                    android:gravity="center">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:weightSum="1"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginLeft="12dp">
+
+                        <CheckBox
+                            android:id="@+id/Regist_Chb_agree01"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:text="@string/Agree_check_service"
+                            android:button="@drawable/selector_check_box"
+                            android:paddingLeft="9dp"
+                            android:textColor="@color/colorb8b8b8"/>
+
+                        <TextView
+                            android:id="@+id/Regist_Txt_agree01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorb8b8b8"
+                            android:text="상세보기"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/shape_stroke_corner_05px"
+                    android:backgroundTint="@color/colorb8b8b8"
+                    android:gravity="center">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:weightSum="1"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginLeft="12dp">
+
+                        <CheckBox
+                            android:id="@+id/Regist_Chb_agree02"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:text="@string/Agree_check_personal_info"
+                            android:button="@drawable/selector_check_box"
+                            android:paddingLeft="9dp"
+                            android:textColor="@color/colorb8b8b8"/>
+
+                        <TextView
+                            android:id="@+id/Regist_Txt_agree02"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorb8b8b8"
+                            android:text="@string/Agree_check_detail"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:textColor="@color/colorb8b8b8"
+                android:text="@string/Agree_check_text"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="26dp"></LinearLayout>
+
+            <Button
+                android:id="@+id/btn_agree_check_next"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/shape_solid_corner"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/Agree_check_next"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"></LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

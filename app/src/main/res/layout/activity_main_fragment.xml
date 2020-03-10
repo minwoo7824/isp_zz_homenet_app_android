@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/MainFragment_Lin_top"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:elevation="0.5dp"
+        android:background="@color/colorWhite">
+
+        <Button
+            android:id="@+id/MainFragment_Btn_Back"
+            android:layout_width="60dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_btn_home"
+            android:onClick="OnClickBtnMainFragment"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/MainFragment_Txt_Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/Main_title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp" />
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_arrow"
+            android:enabled="false"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/MainFragment_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/MainFragment_Lin_top"
+        android:layout_weight="1"
+        android:layout_marginBottom="56dp"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/img_main_tab_bg"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:id="@+id/MainFragment_Lin_Control"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:onClick="OnClickBtnMainFragment" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_main_tab02" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ControlTab_title"
+                android:textColor="@color/colorPrimary"
+                android:textSize="11dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MainFragment_Lin_Home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:onClick="OnClickBtnMainFragment" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_main_tab01" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/MainTab_title"
+                android:textColor="@color/colorb8b8b8"
+                android:textSize="11dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MainFragment_Lin_Info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:onClick="OnClickBtnMainFragment" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_main_tab03"
+                android:tint="@color/colorb8b8b8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/InfoTab_title"
+                android:textColor="@color/colorb8b8b8"
+                android:textSize="11dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MainFragment_Lin_Setup"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:onClick="OnClickBtnMainFragment">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_main_tab04" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/SettingTab_title"
+                android:textColor="@color/colorb8b8b8"
+                android:textSize="11dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/MainFragment_Img_Mode"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_mode_room"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:onClick="OnClickBtnMainFragment">
+    </ImageView>
+</RelativeLayout>

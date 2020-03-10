@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/Light_Lin_List_Item_Parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer_list_shadow_radius_off"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:weightSum="100">
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"></LinearLayout>
+
+            <TextView
+                android:id="@+id/Light_Txt_List_Item_Title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:gravity="center_vertical"
+                android:textSize="16dp"
+                android:textColor="@color/colorBlack"
+                android:text="@string/control_detail_title"/>
+
+            <Switch
+                android:id="@+id/Light_Swh_List_Item"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:thumb="@drawable/switch_thumb_selector"
+                android:track="@drawable/switch_track_selector"
+                android:checked="false"/>
+
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Light_Lin_List_Item_Visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fafafa"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:weightSum="100">
+
+                <ImageView
+                    android:id="@+id/Light_Img_List_Item_Minus"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_control_minus"/>
+
+                <LinearLayout
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="100"
+                    android:weightSum="100"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:id="@+id/Light_Lin_List_Item_Light01"
+                        android:layout_width="32dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_solid_corner"
+                        android:backgroundTint="@color/colorfafafa"></LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Light_Lin_List_Item_Light02"
+                        android:layout_width="32dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_solid_corner"
+                        android:backgroundTint="@color/colorfafafa"></LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Light_Lin_List_Item_Light03"
+                        android:layout_width="32dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_solid_corner"
+                        android:backgroundTint="@color/colorfafafa"></LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Light_Lin_List_Item_Light04"
+                        android:layout_width="32dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_solid_corner"
+                        android:backgroundTint="@color/colorfafafa"></LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Light_Lin_List_Item_Light05"
+                        android:layout_width="32dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_solid_corner"
+                        android:backgroundTint="@color/colorfafafa"></LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <ImageView
+                    android:id="@+id/Light_Img_List_Item_Plus"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_control_plus"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp"></LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="8dp"></LinearLayout>
+</LinearLayout>

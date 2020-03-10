@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/Ventilation_Lin_List_Item_Parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer_list_shadow_radius_off"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:weightSum="100">
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"></LinearLayout>
+
+            <TextView
+                android:id="@+id/Ventilation_Txt_List_Item_Title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:gravity="center_vertical"
+                android:textSize="16dp"
+                android:textColor="@color/colorBlack"
+                android:text="@string/control_detail_title"/>
+
+            <Switch
+                android:id="@+id/Ventilation_Swh_List_Item"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:thumb="@drawable/switch_thumb_selector"
+                android:track="@drawable/switch_track_selector"
+                android:checked="false"/>
+
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Ventilation_Lin_List_Item_Visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fafafa"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="108dp"
+                android:weightSum="90"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="#f2bc51"
+                        android:text="@string/Ventilation_textview_status"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="12dp"></LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txt_ventilation_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="#f2bc51"
+                        android:text="@string/Ventilation_textview_filter_normal"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="76dp"
+                    android:background="@color/colorfafafa"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/colorPrimary"
+                        android:text="풍량"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="12dp"></LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txt_ventilation_wind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/colorPrimary"
+                        android:text="@string/Ventilation_textview_wind_3"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="76dp"
+                    android:background="@color/colorfafafa"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="#47c2d2"
+                        android:text="@string/Ventilation_textview_mode"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="12dp"></LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txt_ventilation_mode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="#47c2d2"
+                        android:text="@string/Ventilation_textview_mode_normal"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="8dp"></LinearLayout>
+
+</LinearLayout>

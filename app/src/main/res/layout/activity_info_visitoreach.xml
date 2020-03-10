@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:elevation="0.5dp">
+
+        <LinearLayout
+            android:layout_width="16dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/VisitorEach_Lin_Home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="OnClickBtnVisitorEach">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_back"
+                android:tint="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/Visitor_title"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/VisitorEach_Btn_Menu"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@drawable/selector_btn_list"
+            android:onClick="OnClickBtnVisitorEach"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.kd.One.Views.CustomImageView
+            android:id="@+id/VisitorEach_ImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="23.5dp"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/VisitorEach_TextView_Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="@color/colorBlack"/>
+            <TextView
+                android:id="@+id/VisitorEach_TextView_Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textSize="18dp"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/VisitorEach_TextView_Location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/colorBlack"/>
+
+            <TextView
+                android:id="@+id/VisitorEach_TextView_Num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/VisitorEach_Btn_Left"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_blue_left_arrow"
+                android:background="@null"
+                android:onClick="OnClickBtnVisitorEach" />
+
+            <Button
+                android:id="@+id/VisitorEach_Btn_Control"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_solid_corner"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="OnClickBtnVisitorEach"
+                android:text="@string/Visitor_btn_list"
+                android:textColor="@color/colorWhite"
+                android:textSize="15dp" />
+
+            <ImageButton
+                android:id="@+id/VisitorEach_Btn_Right"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:src="@drawable/ic_blue_left_arrow"
+                android:rotation="180"
+                android:onClick="OnClickBtnVisitorEach" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <LinearLayout
+            android:layout_width="16dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+        <TextView
+            android:id="@+id/VisitorList_Txt_List_Item_Date"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textSize="14dp"
+            android:textColor="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="24dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+        <TextView
+            android:id="@+id/VisitorList_Txt_List_Item_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textSize="14dp"
+            android:textColor="@color/colorBlack"/>
+    </LinearLayout>
+</LinearLayout>

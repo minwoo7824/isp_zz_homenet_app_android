@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ControlFrag_Lin_Heat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:onClick="OnClickLinControlFragment"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:background="@drawable/img_bg_shadow"
+                android:weightSum="100"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_control_heat"/>
+
+                <LinearLayout
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="100"
+                    android:gravity="center_vertical"
+                    android:text="@string/Slidemenu_textview_heat_title"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="18dp"
+                    android:layout_height="match_parent"></LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ControlFrag_Lin_Gas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:onClick="OnClickLinControlFragment"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:background="@drawable/img_bg_shadow"
+                android:weightSum="100"
+                android:gravity="center_vertical"
+                android:elevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_control_gas"/>
+
+                <LinearLayout
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="100"
+                    android:gravity="center_vertical"
+                    android:text="@string/Slidemenu_textview_gas_title"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="18dp"
+                    android:layout_height="match_parent"></LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ControlFrag_Lin_Light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:onClick="OnClickLinControlFragment"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:background="@drawable/img_bg_shadow"
+                android:weightSum="100"
+                android:gravity="center_vertical"
+                android:elevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_control_light"/>
+
+                <LinearLayout
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="100"
+                    android:gravity="center_vertical"
+                    android:text="@string/Slidemenu_textview_light_title"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="18dp"
+                    android:layout_height="match_parent"></LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ControlFrag_Lin_Power"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:onClick="OnClickLinControlFragment"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:background="@drawable/img_bg_shadow"
+                android:weightSum="100"
+                android:gravity="center_vertical"
+                android:elevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_control_stand_by_power"/>
+
+                <LinearLayout
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="100"
+                    android:gravity="center_vertical"
+                    android:text="@string/Slidemenu_textview_power_title"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="18dp"
+                    android:layout_height="match_parent"></LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ControlFrag_Lin_Ventilation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:onClick="OnClickLinControlFragment"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:background="@drawable/img_bg_shadow"
+                android:weightSum="100"
+                android:gravity="center_vertical"
+                android:elevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_control_ventilation"/>
+
+                <LinearLayout
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="100"
+                    android:gravity="center_vertical"
+                    android:text="@string/Slidemenu_textview_ventilation_title"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="18dp"
+                    android:layout_height="match_parent"></LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ControlTextViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|top"
+            android:text="가스"
+            android:textColor="@color/colorCoverTitle"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/ControlTextViewContents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center|top"
+            android:text="GAS VALVE CONTROLLER"
+            android:textColor="@color/colorCoverContents"
+            android:textSize="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:gravity="center|top"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ControlImageViewDot1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_dot"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ControlImageViewDot2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_dot"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ControlImageViewDot3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_dot"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ControlImageViewDot4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_dot"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ControlImageViewDot5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_dot"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ControlImageViewDot6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_dot"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ControlImageViewDot7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_dot"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ControlImageViewDot8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_dot"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ControlImageViewDot9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_dot"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ControlImageViewDot10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_dot"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

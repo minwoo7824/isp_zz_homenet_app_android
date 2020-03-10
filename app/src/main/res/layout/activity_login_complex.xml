@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Complex_Layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55.5dp"
+        android:gravity="center"
+        android:background="@color/colorWhite"
+        android:weightSum="100"
+        android:elevation="3dp">
+
+        <LinearLayout
+            android:layout_width="16dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="100"
+            android:layout_height="34dp"
+            android:background="@drawable/img_textbox_basic_medium"
+            android:backgroundTint="#fafafa"
+            android:weightSum="100">
+            <EditText
+                android:id="@+id/Complex_EditText_Name"
+                android:layout_width="0dp"
+                android:layout_weight="100"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/Complex_textbox_hint_search"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/color585858"
+                android:textColorHint="@color/color585858"
+                android:textSize="14dp" />
+
+            <LinearLayout
+                android:layout_width="8dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <ImageView
+                android:id="@+id/Complex_img_reset"
+                android:onClick="OnClickBtnComplex"
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_edit_close"
+                android:scaleType="fitCenter"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="14dp"
+            android:layout_height="wrap_content"></LinearLayout>
+
+        <ImageView
+            android:id="@+id/Complex_img_Refresh"
+            android:onClick="OnClickBtnComplex"
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_refresh"/>
+
+        <LinearLayout
+            android:layout_width="16dp"
+            android:layout_height="wrap_content"></LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <ListView
+                android:id="@+id/Complex_ListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"></ListView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal"
+            android:background="@color/colorWhite">
+
+            <Button
+                android:id="@+id/Complex_Btn_SelectComplete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/img_textbox_basic_medium"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="OnClickBtnComplex"
+                android:text="@string/Complex_checkbox_title"
+                android:textColor="@color/colorWhite"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

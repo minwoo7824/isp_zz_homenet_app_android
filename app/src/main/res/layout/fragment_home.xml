@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:weightSum="90">
+
+            <FrameLayout
+                android:id="@+id/HomeFragment_Frm_Use"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_stroke_05px">
+
+                <TextView
+                    android:id="@+id/HomeFragment_Txt_Category"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="전기"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:textSize="20dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_down_arrow"
+                    android:tint="@color/colorPrimary"
+                    android:layout_gravity="right|center"
+                    android:layout_marginRight="12dp"/>
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/HomeFragment_Btn_Left"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:background="@null"
+                    android:src="@drawable/ic_blue_arrow" />
+
+                <TextView
+                    android:id="@+id/HomeFragment_Txt_Date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/Ems_textview_date"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18dp" />
+
+                <ImageButton
+                    android:id="@+id/HomeFragment_Btn_Right"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:src="@drawable/ic_blue_arrow"
+                    android:rotation="180" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:id="@+id/HomeFragment_Lin_Day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/Ems_Btn_Day"
+                            android:layout_width="42dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/Ems_btn_date"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14dp" />
+
+                        <LinearLayout
+                            android:layout_marginTop="4dp"
+                            android:layout_width="24dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorPrimary"></LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/HomeFragment_Lin_Month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/Ems_Btn_Month"
+                            android:layout_width="42dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/Ems_btn_month"
+                            android:textColor="@color/colorb8b8b8"
+                            android:textSize="14dp" />
+
+                        <LinearLayout
+                            android:layout_marginTop="4dp"
+                            android:layout_width="24dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorPrimary"
+                            android:visibility="invisible"></LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"></LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/HomeFragment_Layout_Graph"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.kd.One.Views.CustomTestView
+                        android:id="@+id/HomeFragment_Txt_Y_Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:rotation="-180"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:id="@+id/HomeFragment_Txt_X_Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="10dp"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

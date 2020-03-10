@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/Heat_Lin_List_Item_Parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer_list_shadow_radius_off"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:weightSum="100">
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"></LinearLayout>
+
+            <TextView
+                android:id="@+id/Heat_Txt_List_Item_Title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:gravity="center_vertical"
+                android:textSize="16dp"
+                android:textColor="@color/colorBlack"
+                android:text="@string/control_detail_title"/>
+
+            <Switch
+                android:id="@+id/Heat_Swh_List_Item"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:thumb="@drawable/switch_thumb_selector"
+                android:track="@drawable/switch_track_selector"
+                android:checked="false"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Heat_Lin_List_Item_Visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fafafa"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:weightSum="90">
+                <TextView
+                    android:id="@+id/Heat_Txt_List_Item_heat"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"
+                    android:background="@drawable/shape_stroke_corner_50dp"
+                    android:text="@string/Heat_btn_heat"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:textSize="14dp"/>
+
+                <LinearLayout
+                    android:layout_width="19dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/Heat_Txt_List_Item_hot_water"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"
+                    android:background="@drawable/shape_stroke_corner_50dp"
+                    android:text="@string/Heat_btn_hotwater"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:textSize="14dp"/>
+
+                <LinearLayout
+                    android:layout_width="19dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/Heat_Txt_List_Item_mode"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"
+                    android:background="@drawable/shape_stroke_corner_50dp"
+                    android:text="@string/Heat_btn_goout"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:textSize="14dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Heat_Lin_List_Item_Control_Group_Visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+               >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"></LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Heat_Lin_List_Item_Current_Parent_Visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:weightSum="90"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="19dp"
+                        android:layout_height="match_parent"></LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorb8b8b8"
+                        android:gravity="center_horizontal|top"
+                        android:textSize="14dp"
+                        android:text="@string/Heat_textview_now_temp"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/Heat_Txt_List_Item_Current_Temp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:textSize="14dp"
+                            android:textColor="@color/colorb8b8b8"
+                            android:gravity="center_horizontal|top"
+                            android:text="0"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_toRightOf="@id/Heat_Txt_List_Item_Current_Temp"
+                            android:text="℃"
+                            android:textSize="14dp"
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/colorb8b8b8"/>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="19dp"
+                        android:layout_height="match_parent"></LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/Heat_Rela_List_Item_Setting_Parent_Visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/Heat_Txt_List_Item_Setting_Temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="70dp"
+                        android:textColor="@color/colorPrimary"
+                        android:gravity="center_horizontal|top"
+                        android:text="25"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/Heat_Txt_List_Item_Setting_Temp"
+                        android:text="℃"
+                        android:textSize="70dp"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/colorPrimary"/>
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="29dp">
+
+                    <TextView
+                        android:id="@+id/Heat_Txt_ListItem_Go_Out_Mode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="14dp"
+                        android:text="외출중"
+                        android:textColor="@color/colorb8b8b8"
+                        android:visibility="invisible"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:weightSum="100"
+                    android:gravity="center_vertical">
+                    <ImageButton
+                        android:id="@+id/Heat_Btn_List_Item_Minus"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_control_minus"/>
+
+                    <LinearLayout
+                        android:layout_width="37dp"
+                        android:layout_height="match_parent"></LinearLayout>
+
+                    <SeekBar
+                        android:id="@+id/Heat_Seek_List_Item"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="100"
+                        android:thumb="@drawable/switch_thumb_on"/>
+
+                    <LinearLayout
+                        android:layout_width="37dp"
+                        android:layout_height="match_parent"></LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/Heat_Btn_List_Item_Plus"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_control_plus"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#fafafa"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <Button
+                    android:id="@+id/Heat_Btn_List_Item_Save"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/shape_stroke_corner_50dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/Heat_btn_save"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"></LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="8dp"></LinearLayout>
+
+</LinearLayout>

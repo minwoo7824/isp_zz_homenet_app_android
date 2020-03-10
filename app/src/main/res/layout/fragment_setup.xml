@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="12dp">
+
+        <LinearLayout
+            android:id="@+id/Setup_LinearLayout_Push"
+            android:onClick="OnClickLinControlFragment"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@drawable/img_bg_shadow"
+            android:weightSum="100"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="26dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_setting_alarm"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:gravity="center_vertical"
+                android:text="@string/Setup_textview_userinfo_push"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:layout_width="18dp"
+                android:layout_height="match_parent"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Setup_LinearLayout_User"
+            android:onClick="OnClickLinControlFragment"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@drawable/img_bg_shadow"
+            android:weightSum="100"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="21.4dp"
+                    android:layout_height="21.4dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_setting_user"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:gravity="center_vertical"
+                android:text="@string/Setup_textview_userinfo"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:layout_width="18dp"
+                android:layout_height="match_parent"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Setup_LinearLayout_Version"
+            android:onClick="OnClickLinControlFragment"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@drawable/img_bg_shadow"
+            android:weightSum="100"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="26.6dp"
+                    android:layout_height="26.6dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_setting_version"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:gravity="center_vertical"
+                android:text="@string/Setup_textview_version"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:layout_width="18dp"
+                android:layout_height="match_parent"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Setup_LinearLayout_help"
+            android:onClick="OnClickLinControlFragment"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@drawable/img_bg_shadow"
+            android:weightSum="100"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="26.6dp"
+                    android:layout_height="26.6dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_setting_help"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:gravity="center_vertical"
+                android:text="@string/Setup_textview_help"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:layout_width="18dp"
+                android:layout_height="match_parent"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Setup_LinearLayout_Agree"
+            android:onClick="OnClickLinControlFragment"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@drawable/img_bg_shadow"
+            android:weightSum="100"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="26.6dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_setting_agree"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:gravity="center_vertical"
+                android:text="@string/Setup_textview_userinfo_agree"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:layout_width="18dp"
+                android:layout_height="match_parent"></LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

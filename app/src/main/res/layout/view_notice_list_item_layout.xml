@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorWhite">
+        <LinearLayout
+            android:id="@+id/NoticeList_Lin_List_Item_Click"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/NoticeList_Txt_List_Item_Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/NoticeList_Txt_List_Item_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="49dp"
+                android:layout_height="wrap_content"></LinearLayout>
+            
+            <ImageView
+                android:id="@+id/NoticeList_Img_List_Item_Arrow"
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_down_arrow"/>
+
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/NoticeList_Lin_List_Item_Visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorfafafa"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/NoticeList_Txt_List_Item_Contents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="notification_bg_color">#ff000000</color>
+    <color name="notification_bg_color1">#ffff00ff</color>
+    <color name="notification_content_color">#ff666666</color>
+    <color name="notification_title_color">#ff000000</color>
+    <dimen name="finger_notification_horizontal_margin_16dp">16dp</dimen>
+    <dimen name="finger_notification_horizontal_margin_24dp">24dp</dimen>
+    <dimen name="finger_notification_horizontal_margin_8dp">8dp</dimen>
+    <dimen name="finger_notification_vertical_margin_16dp">16dp</dimen>
+    <dimen name="finger_notification_vertical_margin_24dp">24dp</dimen>
+    <dimen name="finger_notification_vertical_margin_8dp">8dp</dimen>
+    <string name="gcm_defaultSenderId" translatable="false">463601080928</string>
+    <string name="google_api_key" translatable="false">AIzaSyBIr0CdX8rYNMsicirZ1f7zd0D-JWKdIBk</string>
+    <string name="google_app_id" translatable="false">1:463601080928:android:c860c1d3c69e23a9</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBIr0CdX8rYNMsicirZ1f7zd0D-JWKdIBk</string>
+    <string name="project_id" translatable="false">fingerpushlibraryforandroid</string>
+</resources>

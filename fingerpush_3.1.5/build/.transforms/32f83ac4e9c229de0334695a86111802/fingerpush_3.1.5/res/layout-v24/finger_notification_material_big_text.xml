@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxHeight="256dp"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_small_icon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true" />
+
+        <TextView
+            android:id="@+id/txt_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/finger_notification_horizontal_margin_8dp"
+            android:layout_marginRight="@dimen/finger_notification_horizontal_margin_8dp"
+            android:layout_toRightOf="@id/img_small_icon"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:textColor="#5c7480"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/txtNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/finger_notification_horizontal_margin_8dp"
+            android:layout_toRightOf="@id/txt_app_name"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:textColor="#8c8c8c"
+            android:textSize="11sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/txtNumber"
+            android:includeFontPadding="false"
+            android:textColor="#8c8c8c"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/finger_notification_vertical_margin_8dp">
+
+        <ImageView
+            android:id="@+id/img_large_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/finger_notification_horizontal_margin_16dp"
+            android:adjustViewBounds="true" />
+
+        <LinearLayout
+            android:id="@+id/layout_sub_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/img_large_icon"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_small_icon"
+                android:textColor="#252525"
+                android:includeFontPadding="false"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/txtBigContents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/layout_sub_contents"
+                android:includeFontPadding="false"
+                android:textColor="#515151"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

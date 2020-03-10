@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: artifacts:fingerpush_3.1.5:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/fingerpush_3.1.5/build/.transforms/2b5922b5cc46eb2d38affeac2906bec8/fingerpush_3.1.5/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/fingerpush_3.1.5/build/.transforms/2b5922b5cc46eb2d38affeac2906bec8/fingerpush_3.1.5/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

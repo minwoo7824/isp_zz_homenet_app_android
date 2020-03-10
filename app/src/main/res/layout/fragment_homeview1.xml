@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+    <FrameLayout
+        android:id="@+id/layout_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorfafafa">
+        <com.kd.One.sip.MoviePlayView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.kd.One.sip.MoviePlayView" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.kd.One.Views.CustomImageView
+                android:id="@+id/mask"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorfafafa"/>
+            <Button
+                android:id="@+id/btn_stop"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                android:background="@drawable/btn_stop_n"/>
+            <Button
+                android:id="@+id/btn_play"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_play_n"/>
+            <ProgressBar
+                android:id="@+id/loading_bar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+        </RelativeLayout>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/video_list"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="18dp"
+            android:gravity="center_vertical"
+            android:text="@string/txt_rec_list"/>
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/icon_enter"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="12dp"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:weightSum="90">
+
+        <LinearLayout
+            android:layout_width="8dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_fragment_homeview_record"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:background="@drawable/layer_list_shadow_radius_on"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_record"
+                android:tint="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimary"
+                android:text="영상녹화"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="9dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_fragment_homeview_voice_send"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="30"
+                android:background="@drawable/layer_list_shadow_radius_on"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_voice_send"
+                    android:tint="@color/colorPrimary"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="4dp"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="음성보내기"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="9dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_fragment_homeview_door_open"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:background="@drawable/layer_list_shadow_radius_on"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_door_close"
+                android:tint="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimary"
+                android:text="문열림"
+                android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="8dp"
+            android:layout_height="match_parent"></LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/colorWhite"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/btn_rec"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:background="@color/colorRed"
+            android:text="@string/txt_rec"
+            android:textColor="@color/colorWhite"/>
+        <Button
+            android:id="@+id/btn_send_voice"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/btn_rec"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/txt_send_voice"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+</LinearLayout>

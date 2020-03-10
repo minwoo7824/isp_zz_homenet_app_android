@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Member_LinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorWhite"
+        android:gravity="center"
+        android:elevation="0.5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/Member_Lin_Back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="OnClickBtnMember">
+            <ImageView
+                android:layout_width="40dp"
+                android:paddingLeft="16dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_back"
+                android:tint="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/Activity_Name_Setting"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="@string/Member_title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/Activity_Back"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:visibility="invisible"/>
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"></LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/shape_solid_corner"
+                android:backgroundTint="@color/colorfafafa"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Member_TextView_ID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:lines="1"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:text="test8888"
+                    android:textColor="@color/colorb8b8b8"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/shape_solid_corner"
+                android:backgroundTint="@color/colorfafafa"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Member_TextView_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:lines="1"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:text="test8888"
+                    android:textColor="@color/colorb8b8b8"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/shape_solid_corner"
+                android:backgroundTint="@color/colorfafafa"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Member_TextView_Dong"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:lines="1"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:text="test8888"
+                    android:textColor="@color/colorb8b8b8"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/Member_EditText_Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/shape_stroke_corner_05px"
+                    android:backgroundTint="@color/colorb8b8b8"
+                    android:hint="@string/Member_textview_hint_password"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:textSize="14dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorb8b8b8" />
+
+                <EditText
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/Member_EditText_Password_New"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/shape_stroke_corner_05px"
+                    android:backgroundTint="@color/colorb8b8b8"
+                    android:hint="@string/Member_textview_hint_password_new"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:textSize="14dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorb8b8b8" />
+
+                <EditText
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/Member_EditText_Password_New_Confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/shape_stroke_corner_05px"
+                    android:backgroundTint="@color/colorb8b8b8"
+                    android:hint="@string/Member_textview_hint_password_new_confirm"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:textSize="14dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorb8b8b8" />
+
+                <EditText
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/Member_EditText_PhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/shape_stroke_corner_05px"
+                    android:backgroundTint="@color/colorb8b8b8"
+                    android:hint="@string/Member_textview_hint_phone"
+                    android:inputType="phone"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:textSize="14dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorb8b8b8" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/Member_Btn_Change"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/shape_solid_corner"
+                android:backgroundTint="@color/colorPrimary"
+                android:textSize="16dp"
+                android:text="@string/Member_textview_finish"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="16dp"
+                android:onClick="OnClickBtnMember"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="24dp"
+                android:weightSum="100"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/Member_Btn_Logout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:background="@null"
+                    android:textColor="@color/colorb8b8b8"
+                    android:text="@string/Member_btn_logout"
+                    android:textSize="16dp"
+                    android:onClick="OnClickBtnMember"/>
+
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:background="@color/colorb8b8b8"></LinearLayout>
+
+                <Button
+                    android:id="@+id/Member_Btn_Withdrawal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/colorb8b8b8"
+                    android:text="@string/Member_btn_out"
+                    android:textSize="16dp"
+                    android:onClick="OnClickBtnMember"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

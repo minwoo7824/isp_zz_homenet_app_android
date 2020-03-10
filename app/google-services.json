@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "815464728692",
+    "firebase_url": "https://kdhomenet-148204.firebaseio.com",
+    "project_id": "kdhomenet-148204",
+    "storage_bucket": "kdhomenet-148204.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815464728692:android:e39b3e1f85f9c76f",
+        "android_client_info": {
+          "package_name": "com.kyungdong.kdhomenet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815464728692-ophb2ota13sgf7mu07ctspjlv07a95br.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuRBq0d46iOBKUImyJzDoneT9frJu2Iw0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

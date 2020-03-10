@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Regist_Layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="16dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Regist_Lin_Back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="OnClickBtnRegist">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_back"
+                android:tint="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/Activity_Back"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_arrow"
+            android:enabled="false"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="16dp"></LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Regist_EditText_ID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_stroke_corner_05px"
+                    android:hint="@string/Regist_textbox_hint_id"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:nextFocusForward="@+id/Regist_EditText_PW"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorWhiteGray"
+                    android:textSize="15dp" />
+
+                <LinearLayout
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <Button
+                    android:id="@+id/Regist_Btn_Duplication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_solid_corner"
+                    android:backgroundTint="@color/colorb8b8b8"
+                    android:onClick="OnClickBtnRegist"
+                    android:text="@string/Regist_btn_duplication"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/Regist_EditText_PW"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/shape_stroke_corner_05px"
+                android:hint="@string/Regist_textbox_hint_pw"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:lines="1"
+                android:maxLines="1"
+                android:nextFocusForward="@+id/Regist_EditText_PW_Confirm"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorWhiteGray"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/Regist_EditText_PW_Confirm"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/shape_stroke_corner_05px"
+                android:hint="@string/Regist_textbox_hint_pw_confirm"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:lines="1"
+                android:maxLines="1"
+                android:nextFocusForward="@+id/Regist_EditText_Name"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorWhiteGray"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/Regist_EditText_Name"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/shape_stroke_corner_05px"
+                android:hint="@string/Regist_textbox_hint_name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:nextFocusForward="@+id/Regist_EditText_Phone"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorWhiteGray"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/Regist_EditText_Phone"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/shape_stroke_corner_05px"
+                android:hint="@string/Regist_textbox_hint_phone"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLines="1"
+                android:nextFocusForward="@+id/Regist_EditText_Dong"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorWhiteGray"
+                android:textSize="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Regist_EditText_Dong"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_stroke_corner_05px"
+                    android:hint="@string/Regist_textbox_hint_dong"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:nextFocusForward="@+id/Regist_EditText_Ho"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorWhiteGray"
+                    android:textSize="15dp" />
+
+                <LinearLayout
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"></LinearLayout>
+
+                <EditText
+                    android:id="@+id/Regist_EditText_Ho"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_stroke_corner_05px"
+                    android:hint="@string/Regist_textbox_hint_ho"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorWhiteGray"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="8dp"></LinearLayout>
+
+            <Button
+                android:id="@+id/Regist_Btn_Success"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/shape_solid_corner"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="OnClickBtnRegist"
+                android:text="@string/Regist_btn_registsuccess"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
