@@ -376,21 +376,23 @@ public class FindActivity extends Activity {
         mProgressDialog.Dismiss();
         TimeHandlerFind(false, TIMER_NULL);
 
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            HNMLDataParserFindID(tKDData.ReceiveString);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(FindActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Find_popup_title), getString(R.string.Find_popup_success)+"\n" + mID +
-                        getString(R.string.Find_popup_success_1),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
-        }else{
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(FindActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Find_popup_title), getString(R.string.Find_popup_fail),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                HNMLDataParserFindID(tKDData.ReceiveString);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(FindActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Find_popup_title), getString(R.string.Find_popup_success) + "\n" + mID +
+                            getString(R.string.Find_popup_success_1),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            } else {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(FindActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Find_popup_title), getString(R.string.Find_popup_fail),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }

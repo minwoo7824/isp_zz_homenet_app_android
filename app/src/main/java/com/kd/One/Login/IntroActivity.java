@@ -508,135 +508,137 @@ public class IntroActivity extends Activity {
         mProgressDialog.Dismiss();
         TimeHandlerLogin(false, TIMER_NULL);
 
-        LoginParser(tKDData.ReceiveString);
+        if(tKDData != null) {
+            LoginParser(tKDData.ReceiveString);
 
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
 
-            Log.e("LoginActivity","LoginRequestResult : " + tKDData.Result);
+                Log.e("LoginActivity", "LoginRequestResult : " + tKDData.Result);
 
-            if(mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY) == ""){
-                if(mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Login_popup_title_certify), getString(R.string.Login_popup_contents_certify),
-                            mPopupListenerOKCertify);
-                    mCustomPopup.show();
-                }
-            } else if(mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY_ID) == ""){
-                if(mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Login_popup_title_certify), getString(R.string.Login_popup_contents_certify),
-                            mPopupListenerOKCertify);
-                    mCustomPopup.show();
-                }
-            } else if(mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY_ID) != ""){
-                String tStringID = mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY_ID).substring(4);
-                String tStringCertify = mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY).substring(0, 4);
+                if (mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY) == "") {
+                    if (mCustomPopup == null) {
+                        mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
+                                getString(R.string.Login_popup_title_certify), getString(R.string.Login_popup_contents_certify),
+                                mPopupListenerOKCertify);
+                        mCustomPopup.show();
+                    }
+                } else if (mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY_ID) == "") {
+                    if (mCustomPopup == null) {
+                        mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
+                                getString(R.string.Login_popup_title_certify), getString(R.string.Login_popup_contents_certify),
+                                mPopupListenerOKCertify);
+                        mCustomPopup.show();
+                    }
+                } else if (mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY_ID) != "") {
+                    String tStringID = mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY_ID).substring(4);
+                    String tStringCertify = mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY).substring(0, 4);
 
-                if(tStringID.equals(mLocalConfig.getStringValue(Constants.SAVE_DATA_ID))
-                        && tStringCertify.equals(mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY))){
-                    if(mLoginSuccessFlag == 1){
-                        // 인증이 정상적으로 되어 있음. 성공
-                        if(mLoginLevelCode.equals("11")){
-                            // 관리자 허가 성공
-                            Message tMsg = Message.obtain();
-                            tMsg.replyTo = mLoginResponse;
-                            tMsg.what    = Constants.MSG_WHAT_TIMER_START;
+                    if (tStringID.equals(mLocalConfig.getStringValue(Constants.SAVE_DATA_ID))
+                            && tStringCertify.equals(mLocalConfig.getStringValue(Constants.SAVE_DATA_CERTIFY))) {
+                        if (mLoginSuccessFlag == 1) {
+                            // 인증이 정상적으로 되어 있음. 성공
+                            if (mLoginLevelCode.equals("11")) {
+                                // 관리자 허가 성공
+                                Message tMsg = Message.obtain();
+                                tMsg.replyTo = mLoginResponse;
+                                tMsg.what = Constants.MSG_WHAT_TIMER_START;
 
-                            Bundle bundle = new Bundle();
-                            bundle.putInt(Constants.KD_DATA_WHAT, tMsg.what);
-                            tMsg.setData(bundle);
-                            sendMessage(tMsg);
+                                Bundle bundle = new Bundle();
+                                bundle.putInt(Constants.KD_DATA_WHAT, tMsg.what);
+                                tMsg.setData(bundle);
+                                sendMessage(tMsg);
 
-                            mLocalConfig.setValue(Constants.SAVE_DATA_DONG, tKDData.Dong);
-                            mLocalConfig.setValue(Constants.SAVE_DATA_HO, tKDData.Ho);
-                            mLocalConfig.setValue(Constants.SAVE_DATA_LOGIN_STATUS,1);
+                                mLocalConfig.setValue(Constants.SAVE_DATA_DONG, tKDData.Dong);
+                                mLocalConfig.setValue(Constants.SAVE_DATA_HO, tKDData.Ho);
+                                mLocalConfig.setValue(Constants.SAVE_DATA_LOGIN_STATUS, 1);
 
-                            if (getIntent().getExtras() != null){
-                                if (getIntent().getExtras().containsKey(Constants.INTENT_TYPE_HOME_VIEW)){
-                                    Intent intent = new Intent(IntroActivity.this, SmartHomeviewActivity.class);
-                                    intent.putExtra("pushType",getIntent().getStringExtra("pushType"));
-                                    intent.putExtra("pushPassword",getIntent().getStringExtra("pushPassword"));
-                                    startActivity(intent);
-                                    finish();
-                                }else{
+                                if (getIntent().getExtras() != null) {
+                                    if (getIntent().getExtras().containsKey(Constants.INTENT_TYPE_HOME_VIEW)) {
+                                        Intent intent = new Intent(IntroActivity.this, SmartHomeviewActivity.class);
+                                        intent.putExtra("pushType", getIntent().getStringExtra("pushType"));
+                                        intent.putExtra("pushPassword", getIntent().getStringExtra("pushPassword"));
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        Intent intent = new Intent(IntroActivity.this, MainFragment.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                } else {
                                     Intent intent = new Intent(IntroActivity.this, MainFragment.class);
                                     startActivity(intent);
                                     finish();
                                 }
-                            }else{
-                                Intent intent = new Intent(IntroActivity.this, MainFragment.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        } else{
-                            // 관리자 허가 실패
-                            mLocalConfig.setValue(Constants.SAVE_DATA_DONG, tKDData.Dong);
-                            mLocalConfig.setValue(Constants.SAVE_DATA_HO, tKDData.Ho);
-                            mLocalConfig.setValue(Constants.SAVE_DATA_LOGIN_STATUS,-1);
+                            } else {
+                                // 관리자 허가 실패
+                                mLocalConfig.setValue(Constants.SAVE_DATA_DONG, tKDData.Dong);
+                                mLocalConfig.setValue(Constants.SAVE_DATA_HO, tKDData.Ho);
+                                mLocalConfig.setValue(Constants.SAVE_DATA_LOGIN_STATUS, -1);
 
-                            if(mCustomPopup == null) {
+                                if (mCustomPopup == null) {
+                                    mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
+                                            getString(R.string.Login_popup_title_admin), getString(R.string.Login_popup_contents_admin),
+                                            mPopupListenerOKAdmin);
+                                    mCustomPopup.show();
+                                }
+                            }
+                        } else {
+                            // 인증이 정상적으로 이루어지지 않았음.
+                            if (mCustomPopup == null) {
                                 mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
-                                        getString(R.string.Login_popup_title_admin), getString(R.string.Login_popup_contents_admin),
-                                        mPopupListenerOKAdmin);
+                                        getString(R.string.Login_popup_title_certify), getString(R.string.Login_popup_contents_certify),
+                                        mPopupListenerOKCertify);
                                 mCustomPopup.show();
                             }
                         }
-                    }else{
-                        // 인증이 정상적으로 이루어지지 않았음.
-                        if(mCustomPopup == null) {
+                    } else {
+                        if (mCustomPopup == null) {
                             mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
                                     getString(R.string.Login_popup_title_certify), getString(R.string.Login_popup_contents_certify),
                                     mPopupListenerOKCertify);
                             mCustomPopup.show();
                         }
                     }
-                }else{
-                    if(mCustomPopup == null) {
+                } else {
+                    if (mCustomPopup == null) {
+                        mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
+                                getString(R.string.Login_popup_title_fail), getString(R.string.Login_popup_fail),
+                                mPopupListenerOK);
+                        mCustomPopup.show();
+                    }
+                }
+            } else {
+
+                Log.e("LoginActivity", "LoginRequestResult : " + tKDData.Result);
+
+                if (tKDData.Result.equals(Constants.HNML_RESULT_ID_ERROR)) {
+                    if (mCustomPopup == null) {
+                        mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
+                                getString(R.string.Login_popup_title_fail), getString(R.string.Login_popup_id_fail),
+                                mPopupListenerOK);
+                        mCustomPopup.show();
+                    }
+                } else if (tKDData.Result.equals(Constants.HNML_RESULT_PW_ERROR)) {
+                    if (mCustomPopup == null) {
+                        mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
+                                getString(R.string.Login_popup_title_fail), getString(R.string.Login_popup_pw_fail),
+                                mPopupListenerOK);
+                        mCustomPopup.show();
+                    }
+                } else if (tKDData.Result.equals(Constants.HNML_RESULT_CERTIFY_CHAR_ERROR)) {
+                    if (mCustomPopup == null) {
                         mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
                                 getString(R.string.Login_popup_title_certify), getString(R.string.Login_popup_contents_certify),
                                 mPopupListenerOKCertify);
                         mCustomPopup.show();
                     }
-                }
-            } else {
-                if(mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Login_popup_title_fail), getString(R.string.Login_popup_fail),
-                            mPopupListenerOK);
-                    mCustomPopup.show();
-                }
-            }
-        } else{
-
-            Log.e("LoginActivity","LoginRequestResult : " + tKDData.Result);
-
-            if(tKDData.Result.equals(Constants.HNML_RESULT_ID_ERROR)){
-                if(mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Login_popup_title_fail), getString(R.string.Login_popup_id_fail),
-                            mPopupListenerOK);
-                    mCustomPopup.show();
-                }
-            }else if(tKDData.Result.equals(Constants.HNML_RESULT_PW_ERROR)){
-                if(mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Login_popup_title_fail), getString(R.string.Login_popup_pw_fail),
-                            mPopupListenerOK);
-                    mCustomPopup.show();
-                }
-            }else if(tKDData.Result.equals(Constants.HNML_RESULT_CERTIFY_CHAR_ERROR)){
-                if(mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Login_popup_title_certify), getString(R.string.Login_popup_contents_certify),
-                            mPopupListenerOKCertify);
-                    mCustomPopup.show();
-                }
-            }else {
-                if(mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Login_popup_title_fail), getString(R.string.Login_popup_fail),
-                            mPopupListenerOK);
-                    mCustomPopup.show();
+                } else {
+                    if (mCustomPopup == null) {
+                        mCustomPopup = new CustomPopupBasic(IntroActivity.this, R.layout.popup_basic_onebutton,
+                                getString(R.string.Login_popup_title_fail), getString(R.string.Login_popup_fail),
+                                mPopupListenerOK);
+                        mCustomPopup.show();
+                    }
                 }
             }
         }
@@ -683,6 +685,10 @@ public class IntroActivity extends Activity {
 //                            if (test != null && test.equals("Yes")){
 //                                Log.i("tag","test : " + tConvert);
 //                            }
+                            // MARK START : JMH -2020-03-16 PUSH 지원하지 않는 현장의 경우 기존 스마트폰에 저장된 PUSH 값 참조하여 메뉴 노출되는 이슈 -> 메 로그인시 푸시 값 초기화 하도록 수정
+                            // Default : 푸시 설정 표시하지 않음
+                            mLocalConfig.remove(Constants.SAVE_DATA_USE_PUSH);
+                            // MARK END
 
                             if(tName.equals("PhoneCertify")){
                                 tName = "";

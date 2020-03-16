@@ -99,16 +99,19 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
 
-//        registerReceiver();
+        //registerReceiver();
         //******************************************************************************************
 
         //******************************************************************************************
         /**
          * @breif service registration
          */
-//        Intent intent_response = new Intent(getActivity(), HomeTokService.class);
-//        getActivity().startService(intent_response);
-//        mMainResponse = new Messenger(responseHandler);
+        //MARK START : JMH - 2020-03-13 제어기기 리스트 요청을 위한 메신저 등록
+        Intent intent_response = new Intent(getActivity(), HomeTokService.class);
+        getActivity().startService(intent_response);
+        mMainResponse = new Messenger(responseHandler);
+        //MARK END
+
         //******************************************************************************************
         /**
          * @breif local variable registration
@@ -125,7 +128,7 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
         //******************************************************************************************
 
         //******************************************************************************************
-//        mProgressDialog = new CustomProgressDialog(getActivity());
+        mProgressDialog = new CustomProgressDialog(getActivity());
         /**
          * @breif dot find activity
          */
@@ -140,8 +143,11 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
         mControlLinHeat.setVisibility(View.VISIBLE);
         mControlLinGas.setVisibility(View.VISIBLE);
         mControlLinLight.setVisibility(View.VISIBLE);
-        mControlLinPower.setVisibility(View.VISIBLE);
-        mControlLinVentilation.setVisibility(View.VISIBLE);
+
+        //MARK START : JMH - 2020-03-13 제어기기 모두 표시에서 현재 연동가능한 기기만 표시하도록 수정 (가스, 조명, 난방은 디폴트로 표시)
+        mControlLinPower.setVisibility(View.GONE);
+        mControlLinVentilation.setVisibility(View.GONE);
+        //MARK END
 
         mControlLinHeat.setOnClickListener(this);
         mControlLinGas.setOnClickListener(this);
@@ -194,10 +200,12 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
 
-//        Intent intent = new Intent(getActivity(), HomeTokService.class);
-//        getActivity().bindService(intent, requestConnection, Context.BIND_AUTO_CREATE);
-//
-//        mProgressDialog.Show(getString(R.string.progress_request));
+        //MARK START : JMH - 2020-03-13 제어기기 리스트 요청을 위한 Service Bind
+        Intent intent = new Intent(getActivity(), HomeTokService.class);
+        getActivity().bindService(intent, requestConnection, Context.BIND_AUTO_CREATE);
+        //MARK END
+
+        mProgressDialog.Show(getString(R.string.progress_request));
     }
     //**********************************************************************************************
 
@@ -208,18 +216,20 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
     public void onPause() {
         super.onPause();
 
-//        getActivity().unbindService(requestConnection);
-//
-//        Message tMsg = Message.obtain(null, Constants.MSG_WHAT_UNREGISTER_MESSENGER);
-//        tMsg.replyTo = mMainResponse;
-//        sendMessage(tMsg);
-//        mMainRequest = null;
-//        TimeHandlerMain(false, TIMER_NULL);
-//
-//        if(mCustomPopup != null){
-//            mCustomPopup.dismiss();
-//            mCustomPopup = null;
-//        }
+        //MARK START : JMH - 2020-03-13 제어기기 리스트 요청을 위한 메시지 요청
+        getActivity().unbindService(requestConnection);
+
+        Message tMsg = Message.obtain(null, Constants.MSG_WHAT_UNREGISTER_MESSENGER);
+        tMsg.replyTo = mMainResponse;
+        sendMessage(tMsg);
+        mMainRequest = null;
+        TimeHandlerMain(false, TIMER_NULL);
+
+        if(mCustomPopup != null){
+            mCustomPopup.dismiss();
+            mCustomPopup = null;
+        }
+        //MARK END
     }
     //**********************************************************************************************
 
@@ -233,7 +243,7 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
         }
         super.onDestroy();
 
-//        getActivity().unregisterReceiver(appReceiver);
+        //getActivity().unregisterReceiver(appReceiver);
     }
 
     //**********************************************************************************************
@@ -424,23 +434,27 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
         mRequestState   = REQUEST_DATA_CLEAR;
         TimeHandlerMain(false, TIMER_NULL);
 
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            MainInfoParser(tKDData.ReceiveString);
-            if(mMyGlobal.GlobalDeviceList.size() == 0){
-                mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
-        }else{
-            mProgressDialog.Dismiss();
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                MainInfoParser(tKDData.ReceiveString);
+                if (mMyGlobal.GlobalDeviceList.size() == 0) {
+                    mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            } else {
+                mProgressDialog.Dismiss();
 
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
+        } else {
+            mProgressDialog.Dismiss();
         }
     }
 

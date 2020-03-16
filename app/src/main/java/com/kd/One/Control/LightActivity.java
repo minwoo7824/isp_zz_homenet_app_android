@@ -607,59 +607,68 @@ public class LightActivity extends Activity{
      */
     private void LightStateResult(KDData tKDData){
 
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            HNMLDataParserLight(tKDData.ReceiveString);
-            if(mLightGroupFlag == 1){
-                for(int i = 0; i < mArrayState.size(); i++){
-                    if(!mArrayState.get(i).equals(mLightGroupState)){
-                        mDataSendFlag = 1;
-                        Log.e("light group control", "request start");
-                        break;
-                    }else{
-                        if(mArrayState.size()-1 == i){
-                            TimeHandlerLightGroup(false, TIMER_NULL);
-                            mDataSendFlag = 0;
-                            mLightGroupFlag = 0;
-                            mProgressDialog.Dismiss();
-                            mWaitCount = 0;
-                            mRequestState = REQUEST_DATA_CLEAR;
-                            TimeHandlerLight(false, TIMER_NULL);
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                HNMLDataParserLight(tKDData.ReceiveString);
+                if (mLightGroupFlag == 1) {
+                    for (int i = 0; i < mArrayState.size(); i++) {
+                        if (!mArrayState.get(i).equals(mLightGroupState)) {
+                            mDataSendFlag = 1;
+                            Log.e("light group control", "request start");
+                            break;
+                        } else {
+                            if (mArrayState.size() - 1 == i) {
+                                TimeHandlerLightGroup(false, TIMER_NULL);
+                                mDataSendFlag = 0;
+                                mLightGroupFlag = 0;
+                                mProgressDialog.Dismiss();
+                                mWaitCount = 0;
+                                mRequestState = REQUEST_DATA_CLEAR;
+                                TimeHandlerLight(false, TIMER_NULL);
+                            }
                         }
                     }
-                }
-            }else if(mLightGroupFlag == 2){
-                if(!mArrayState.get(mLightPosition).equals(mLightGroupState)){
-                    mDataSendFlag = 1;
-                    Log.e("light each control", "request start");
-                }else{
-                    mDataSendFlag = 0;
-                    mLightGroupFlag = 0;
-                    mProgressDialog.Dismiss();
+                } else if (mLightGroupFlag == 2) {
+                    if (!mArrayState.get(mLightPosition).equals(mLightGroupState)) {
+                        mDataSendFlag = 1;
+                        Log.e("light each control", "request start");
+                    } else {
+                        mDataSendFlag = 0;
+                        mLightGroupFlag = 0;
+                        mProgressDialog.Dismiss();
+                        mWaitCount = 0;
+                        mRequestState = REQUEST_DATA_CLEAR;
+                        TimeHandlerLight(false, TIMER_NULL);
+                    }
+                } else {
                     mWaitCount = 0;
+                    mDataSendFlag = 0;
                     mRequestState = REQUEST_DATA_CLEAR;
                     TimeHandlerLight(false, TIMER_NULL);
+                    TimeHandlerLightGroup(false, TIMER_NULL);
+                    mProgressDialog.Dismiss();
                 }
-            }else {
+            } else {
                 mWaitCount = 0;
                 mDataSendFlag = 0;
                 mRequestState = REQUEST_DATA_CLEAR;
                 TimeHandlerLight(false, TIMER_NULL);
                 TimeHandlerLightGroup(false, TIMER_NULL);
                 mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(LightActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
-        } else{
+        } else {
             mWaitCount = 0;
             mDataSendFlag = 0;
             mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerLight(false, TIMER_NULL);
             TimeHandlerLightGroup(false, TIMER_NULL);
             mProgressDialog.Dismiss();
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(LightActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************
@@ -670,21 +679,29 @@ public class LightActivity extends Activity{
      * @param tKDData
      */
     private void LightControlResult(KDData tKDData){
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            //mRequestState = REQUEST_DATA_SEND_START;
-            mDataSendFlag = 1;
-        }else{
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                //mRequestState = REQUEST_DATA_SEND_START;
+                mDataSendFlag = 1;
+            } else {
+                mWaitCount = 0;
+                mDataSendFlag = 0;
+                mRequestState = REQUEST_DATA_CLEAR;
+                TimeHandlerLight(false, TIMER_NULL);
+                TimeHandlerLightGroup(false, TIMER_NULL);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(LightActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            }
+        } else {
             mWaitCount = 0;
             mDataSendFlag = 0;
             mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerLight(false, TIMER_NULL);
             TimeHandlerLightGroup(false, TIMER_NULL);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(LightActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************

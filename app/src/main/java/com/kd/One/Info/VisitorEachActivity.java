@@ -467,42 +467,46 @@ public class VisitorEachActivity extends Activity {
     private void VisitorEachResult(KDData tKDData){
         mWaitCount = 0;
         TimeHandlerVisitorEach(false, TIMER_NULL);
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            HNMLParserVisitDataEachList(tKDData.ReceiveString);
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                HNMLParserVisitDataEachList(tKDData.ReceiveString);
 
-            byte[] tImageData = KDUtil.StringToByte(mStringFileData);
-            ByteArrayInputStream tStream = new ByteArrayInputStream(tImageData);
+                byte[] tImageData = KDUtil.StringToByte(mStringFileData);
+                ByteArrayInputStream tStream = new ByteArrayInputStream(tImageData);
 
-            mBitmapImage = null;
-            mBitmapImage = BitmapFactory.decodeStream(tStream);
-            mImageViewVisit.setImageBitmap(mBitmapImage);
+                mBitmapImage = null;
+                mBitmapImage = BitmapFactory.decodeStream(tStream);
+                mImageViewVisit.setImageBitmap(mBitmapImage);
 
-            mTextViewDate.setText(mStringVisitDate);
-            mTextViewTime.setText(mStringVisitTime);
-            mTextViewLocation.setText(mStringVisitLocation);
-            mTextViewNum.setText(String.valueOf(mPosition+1)+"/"+String.valueOf(mArrayListVideoID.size()));
+                mTextViewDate.setText(mStringVisitDate);
+                mTextViewTime.setText(mStringVisitTime);
+                mTextViewLocation.setText(mStringVisitLocation);
+                mTextViewNum.setText(String.valueOf(mPosition + 1) + "/" + String.valueOf(mArrayListVideoID.size()));
 
-            if(mStringVisitState.equals("NEW")){
-                VisitorEachReadRequest();
-            }else {
+                if (mStringVisitState.equals("NEW")) {
+                    VisitorEachReadRequest();
+                } else {
+                    mProgressDialog.Dismiss();
+                }
+            } else if (tKDData.Result.equals(Constants.HNML_RESULT_COMMUNICATION_ERROR)) {
                 mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(VisitorEachActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Visitor_popup_title), getString(R.string.Visitor_popup_contents),
+                            mPopupListenerNone);
+                    mCustomPopup.show();
+                }
+            } else {
+                mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(VisitorEachActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Visitor_popup_title), getString(R.string.Visitor_popup_contents),
+                            mPopupListenerNone);
+                    mCustomPopup.show();
+                }
             }
-        }else if (tKDData.Result.equals(Constants.HNML_RESULT_COMMUNICATION_ERROR)){
+        } else {
             mProgressDialog.Dismiss();
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(VisitorEachActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Visitor_popup_title), getString(R.string.Visitor_popup_contents),
-                        mPopupListenerNone);
-                mCustomPopup.show();
-            }
-        }else{
-            mProgressDialog.Dismiss();
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(VisitorEachActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Visitor_popup_title), getString(R.string.Visitor_popup_contents),
-                        mPopupListenerNone);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************
@@ -515,16 +519,20 @@ public class VisitorEachActivity extends Activity {
     public void VisitorEachReadResult(KDData tKDData){
         mWaitCount = 0;
         TimeHandlerVisitorEach(false, TIMER_NULL);
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            mProgressDialog.Dismiss();
-        }else{
-            mProgressDialog.Dismiss();
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(VisitorEachActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Visitor_popup_title), getString(R.string.Visitor_popup_contents),
-                        mPopupListenerNone);
-                mCustomPopup.show();
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                mProgressDialog.Dismiss();
+            } else {
+                mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(VisitorEachActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Visitor_popup_title), getString(R.string.Visitor_popup_contents),
+                            mPopupListenerNone);
+                    mCustomPopup.show();
+                }
             }
+        } else {
+            mProgressDialog.Dismiss();
         }
     }
     //**********************************************************************************************

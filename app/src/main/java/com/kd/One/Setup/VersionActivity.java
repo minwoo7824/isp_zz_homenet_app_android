@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -159,6 +161,8 @@ public class VersionActivity extends Activity {
         mTextViewNow = (TextView) findViewById(R.id.Version_TextView_NowVersion);
         //******************************************************************************************
 
+        String nowVersion = " Ver. " + getVersionInfo(this);
+        mTextViewNow.setText(nowVersion);
     }
     //**********************************************************************************************
 
@@ -214,12 +218,33 @@ public class VersionActivity extends Activity {
     //**********************************************************************************************
 
     //**********************************************************************************************
+    public String getVersionInfo(Context context) {
+        String version = "Unknown";
+        PackageInfo packageInfo;
+
+        if (context == null) {
+            return version;
+        }
+        try {
+            packageInfo = context.getApplicationContext()
+                    .getPackageManager()
+                    .getPackageInfo(context.getApplicationContext().getPackageName(), 0 );
+            version = packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, "getVersionInfo :" + e.getMessage());
+        }
+        return version;
+    }
+    //**********************************************************************************************
+
+    //**********************************************************************************************
     /**
      * @brief service request connection setup
      */
     private ServiceConnection requestConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            /*
             mVersionRequest = new Messenger(service);
             Message tMsg = Message.obtain(null, Constants.MSG_WHAT_REGISTER_MESSENGER);
             tMsg.replyTo = mVersionResponse;
@@ -229,6 +254,8 @@ public class VersionActivity extends Activity {
             mRequestState = REQUEST_DATA_SEND_START;
             TimeHandlerVersion(true, TIMER_REQUEST);
             mProgressDialog.Show(getString(R.string.progress_request));
+
+            */
         }
 
         @Override
@@ -355,6 +382,7 @@ public class VersionActivity extends Activity {
     private Runnable VersionRunner = new Runnable() {
         @Override
         public void run() {
+            /*
             if (mTimeHandler != null) {
                 if (mRequestState == REQUEST_DATA_SEND_START) {
                     VersionRequest();
@@ -380,6 +408,8 @@ public class VersionActivity extends Activity {
             } else {
                 TimeHandlerVersion(false, TIMER_NULL);
             }
+
+             */
         }
     };
     //**********************************************************************************************
@@ -415,20 +445,25 @@ public class VersionActivity extends Activity {
     public void VersionResult(KDData tKDData) {
         mWaitCount = 0;
         TimeHandlerVersion(false, TIMER_NULL);
-        if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
-            HNMLDataParserVersion(tKDData.ReceiveString);
-            mProgressDialog.Dismiss();
+
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                HNMLDataParserVersion(tKDData.ReceiveString);
+                mProgressDialog.Dismiss();
+            } else {
+                mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(VersionActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+
+                    mStringNowVersion = " Ver" + String.valueOf(2.2);
+                    mTextViewNow.setText(mStringNowVersion);
+                }
+            }
         } else {
             mProgressDialog.Dismiss();
-            if (mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(VersionActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-
-                mStringNowVersion = " Ver" + String.valueOf(2.2);
-                mTextViewNow.setText(mStringNowVersion);
-            }
         }
     }
 

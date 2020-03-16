@@ -45,7 +45,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 
 /**
- * Created by lwg on 2016-07-25.
+ * @description: Created by lwg on 2016-07-25.
  */
 public class HeatActivity extends Activity{
 
@@ -555,8 +555,9 @@ public class HeatActivity extends Activity{
     //**********************************************************************************************
     /**
      * @breif boiler each control request communication
-     * @param String theating -> on, off
+     * @param mode -> on, off
      */
+
     private void HeatEachControlRequest(int mode){
         mWaitCount      = 0;
         mHeatGroupState = "Heating";
@@ -600,7 +601,7 @@ public class HeatActivity extends Activity{
     //**********************************************************************************************
     /**
      * @breif boiler group control request communication
-     * @param String theating -> on, off
+     * @param mode -> on, off
      */
     private void HeatGroupControlRequest(int mode){
         mWaitCount      = 0;
@@ -781,158 +782,169 @@ public class HeatActivity extends Activity{
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void HeatStateResult(KDData tKDData){
 //        Log.e("Heat kd data", tKDData.ReceiveString);
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            HNMLDataParserHeat(tKDData.ReceiveString);
-            if(mHeatGroupFlag == 1){
-                if(mHeatGroupState.equals("Heating")){
-                    for(int i = 0; i < mArrayHeating.size(); i++){
-                        if(!mArrayHeating.get(i).equals(mHeatGroupData)){
-                            mDataSendFlag = 1;
-                            Log.e("heat activity", "group heat");
-                            break;
-                        }else{
-                            if(mArrayHeating.size()-1 == i){
-                                mDataSendFlag = 0;
-                                mHeatGroupFlag  = 0;
-                                mHeatGroupState = "";
-                                mHeatGroupData  = "";
-                                mRequestState   = REQUEST_DATA_CLEAR;
-                                TimeHandlerHeat(false, TIMER_NULL);
-                                TimeHandlerHeatGroup(false, TIMER_NULL);
-                                mProgressDialog.Dismiss();
+        if (tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                HNMLDataParserHeat(tKDData.ReceiveString);
+                if (mHeatGroupFlag == 1) {
+                    if (mHeatGroupState.equals("Heating")) {
+                        for (int i = 0; i < mArrayHeating.size(); i++) {
+                            if (!mArrayHeating.get(i).equals(mHeatGroupData)) {
+                                mDataSendFlag = 1;
+                                Log.e("heat activity", "group heat");
+                                break;
+                            } else {
+                                if (mArrayHeating.size() - 1 == i) {
+                                    mDataSendFlag = 0;
+                                    mHeatGroupFlag = 0;
+                                    mHeatGroupState = "";
+                                    mHeatGroupData = "";
+                                    mRequestState = REQUEST_DATA_CLEAR;
+                                    TimeHandlerHeat(false, TIMER_NULL);
+                                    TimeHandlerHeatGroup(false, TIMER_NULL);
+                                    mProgressDialog.Dismiss();
+                                }
                             }
                         }
-                    }
-                }else if(mHeatGroupState.equals("Mode")){
-                    for(int i = 0; i < mArrayMode.size(); i++){
-                        if(!mArrayMode.get(i).equals(mHeatGroupData)){
-                            mDataSendFlag = 1;
-                            Log.e("heat activity", "group mode");
-                            break;
-                        }else{
-                            if(mArrayMode.size()-1 == i){
-                                mDataSendFlag   = 0;
-                                mHeatGroupFlag  = 0;
-                                mHeatGroupState = "";
-                                mHeatGroupData  = "";
-                                mRequestState   = REQUEST_DATA_CLEAR;
-                                TimeHandlerHeat(false, TIMER_NULL);
-                                TimeHandlerHeatGroup(false, TIMER_NULL);
-                                mProgressDialog.Dismiss();
+                    } else if (mHeatGroupState.equals("Mode")) {
+                        for (int i = 0; i < mArrayMode.size(); i++) {
+                            if (!mArrayMode.get(i).equals(mHeatGroupData)) {
+                                mDataSendFlag = 1;
+                                Log.e("heat activity", "group mode");
+                                break;
+                            } else {
+                                if (mArrayMode.size() - 1 == i) {
+                                    mDataSendFlag = 0;
+                                    mHeatGroupFlag = 0;
+                                    mHeatGroupState = "";
+                                    mHeatGroupData = "";
+                                    mRequestState = REQUEST_DATA_CLEAR;
+                                    TimeHandlerHeat(false, TIMER_NULL);
+                                    TimeHandlerHeatGroup(false, TIMER_NULL);
+                                    mProgressDialog.Dismiss();
+                                }
                             }
                         }
-                    }
-                }else if(mHeatGroupState.equals("Temp")){
-                    for(int i = 0; i < mArraySettingTemp.size(); i++){
-                        if(!mArraySettingTemp.get(i).equals(mHeatGroupData)){
-                            mDataSendFlag = 1;
-                            Log.e("heat activity", "group temp");
-                            break;
-                        }else{
-                            if(mArraySettingTemp.size()-1 == i){
-                                mDataSendFlag   = 0;
-                                mHeatGroupFlag  = 0;
-                                mHeatGroupState = "";
-                                mHeatGroupData  = "";
-                                mRequestState   = REQUEST_DATA_CLEAR;
-                                TimeHandlerHeat(false, TIMER_NULL);
-                                TimeHandlerHeatGroup(false, TIMER_NULL);
-                                mProgressDialog.Dismiss();
+                    } else if (mHeatGroupState.equals("Temp")) {
+                        for (int i = 0; i < mArraySettingTemp.size(); i++) {
+                            if (!mArraySettingTemp.get(i).equals(mHeatGroupData)) {
+                                mDataSendFlag = 1;
+                                Log.e("heat activity", "group temp");
+                                break;
+                            } else {
+                                if (mArraySettingTemp.size() - 1 == i) {
+                                    mDataSendFlag = 0;
+                                    mHeatGroupFlag = 0;
+                                    mHeatGroupState = "";
+                                    mHeatGroupData = "";
+                                    mRequestState = REQUEST_DATA_CLEAR;
+                                    TimeHandlerHeat(false, TIMER_NULL);
+                                    TimeHandlerHeatGroup(false, TIMER_NULL);
+                                    mProgressDialog.Dismiss();
+                                }
                             }
                         }
-                    }
-                }else if(mHeatGroupState.equals("HotWater")){
-                    for(int i = 0; i < mArrayHotwater.size(); i++){
-                        if(!mArrayHotwater.get(i).equals(mHeatGroupData)){
-                            mDataSendFlag = 1;
-                            Log.e("heat activity", "group hotwater");
-                            break;
-                        }else{
-                            if(mArrayHotwater.size()-1 == i){
-                                mDataSendFlag   = 0;
-                                mHeatGroupFlag  = 0;
-                                mHeatGroupState = "";
-                                mHeatGroupData  = "";
-                                mRequestState   = REQUEST_DATA_CLEAR;
-                                TimeHandlerHeat(false, TIMER_NULL);
-                                TimeHandlerHeatGroup(false, TIMER_NULL);
-                                mProgressDialog.Dismiss();
+                    } else if (mHeatGroupState.equals("HotWater")) {
+                        for (int i = 0; i < mArrayHotwater.size(); i++) {
+                            if (!mArrayHotwater.get(i).equals(mHeatGroupData)) {
+                                mDataSendFlag = 1;
+                                Log.e("heat activity", "group hotwater");
+                                break;
+                            } else {
+                                if (mArrayHotwater.size() - 1 == i) {
+                                    mDataSendFlag = 0;
+                                    mHeatGroupFlag = 0;
+                                    mHeatGroupState = "";
+                                    mHeatGroupData = "";
+                                    mRequestState = REQUEST_DATA_CLEAR;
+                                    TimeHandlerHeat(false, TIMER_NULL);
+                                    TimeHandlerHeatGroup(false, TIMER_NULL);
+                                    mProgressDialog.Dismiss();
+                                }
                             }
                         }
+                    } else {
+                        mDataSendFlag = 0;
+                        mHeatGroupFlag = 0;
+                        mHeatGroupState = "";
+                        mHeatGroupData = "";
+                        mRequestState = REQUEST_DATA_CLEAR;
+                        TimeHandlerHeat(false, TIMER_NULL);
+                        TimeHandlerHeatGroup(false, TIMER_NULL);
+                        mProgressDialog.Dismiss();
                     }
-                }else{
-                    mDataSendFlag   = 0;
-                    mHeatGroupFlag  = 0;
-                    mHeatGroupState = "";
-                    mHeatGroupData  = "";
-                    mRequestState   = REQUEST_DATA_CLEAR;
-                    TimeHandlerHeat(false, TIMER_NULL);
-                    TimeHandlerHeatGroup(false, TIMER_NULL);
-                    mProgressDialog.Dismiss();
+                } else {
+                    if (mHeatGroupState.equals("Heating")) {
+                        if (!mArrayHeating.get(mHeatPosition).equals(mHeatGroupData)) {
+                            mDataSendFlag = 1;
+                            Log.e("heat activity", "each heating");
+                        } else {
+                            mDataSendFlag = 0;
+                            mRequestState = REQUEST_DATA_CLEAR;
+                            TimeHandlerHeat(false, TIMER_NULL);
+                            mProgressDialog.Dismiss();
+                        }
+                    } else if (mHeatGroupState.equals("Mode")) {
+                        if (!mArrayMode.get(mHeatPosition).equals(mHeatGroupData)) {
+                            mDataSendFlag = 1;
+                            Log.e("heat activity", "each mode");
+                        } else {
+                            mDataSendFlag = 0;
+                            mRequestState = REQUEST_DATA_CLEAR;
+                            TimeHandlerHeat(false, TIMER_NULL);
+                            mProgressDialog.Dismiss();
+                        }
+                    } else if (mHeatGroupState.equals("Temp")) {
+                        if (!mArraySettingTemp.get(mHeatPosition).equals(mHeatGroupData)) {
+                            mDataSendFlag = 1;
+                            Log.e("heat activity", "each temp");
+                        } else {
+                            mDataSendFlag = 0;
+                            mRequestState = REQUEST_DATA_CLEAR;
+                            TimeHandlerHeat(false, TIMER_NULL);
+                            mProgressDialog.Dismiss();
+                        }
+                    } else if (mHeatGroupState.equals("HotWater")) {
+                        if (!mArrayHotwater.get(mHeatPosition).equals(mHeatGroupData)) {
+                            mDataSendFlag = 1;
+                            Log.e("heat activity", "each hot water");
+                        } else {
+                            mDataSendFlag = 0;
+                            mRequestState = REQUEST_DATA_CLEAR;
+                            TimeHandlerHeat(false, TIMER_NULL);
+                            mProgressDialog.Dismiss();
+                        }
+                    } else {
+                        mDataSendFlag = 0;
+                        mRequestState = REQUEST_DATA_CLEAR;
+                        TimeHandlerHeat(false, TIMER_NULL);
+                        mProgressDialog.Dismiss();
+                    }
                 }
-            }else{
-                if(mHeatGroupState.equals("Heating")){
-                    if(!mArrayHeating.get(mHeatPosition).equals(mHeatGroupData)){
-                        mDataSendFlag = 1;
-                        Log.e("heat activity", "each heating");
-                    }else{
-                        mDataSendFlag   = 0;
-                        mRequestState   = REQUEST_DATA_CLEAR;
-                        TimeHandlerHeat(false, TIMER_NULL);
-                        mProgressDialog.Dismiss();
-                    }
-                }else if(mHeatGroupState.equals("Mode")){
-                    if(!mArrayMode.get(mHeatPosition).equals(mHeatGroupData)){
-                        mDataSendFlag = 1;
-                        Log.e("heat activity", "each mode");
-                    }else{
-                        mDataSendFlag   = 0;
-                        mRequestState   = REQUEST_DATA_CLEAR;
-                        TimeHandlerHeat(false, TIMER_NULL);
-                        mProgressDialog.Dismiss();
-                    }
-                }else if(mHeatGroupState.equals("Temp")){
-                    if(!mArraySettingTemp.get(mHeatPosition).equals(mHeatGroupData)){
-                        mDataSendFlag = 1;
-                        Log.e("heat activity", "each temp");
-                    }else{
-                        mDataSendFlag   = 0;
-                        mRequestState   = REQUEST_DATA_CLEAR;
-                        TimeHandlerHeat(false, TIMER_NULL);
-                        mProgressDialog.Dismiss();
-                    }
-                }else if(mHeatGroupState.equals("HotWater")){
-                    if(!mArrayHotwater.get(mHeatPosition).equals(mHeatGroupData)){
-                        mDataSendFlag = 1;
-                        Log.e("heat activity", "each hot water");
-                    }else{
-                        mDataSendFlag   = 0;
-                        mRequestState   = REQUEST_DATA_CLEAR;
-                        TimeHandlerHeat(false, TIMER_NULL);
-                        mProgressDialog.Dismiss();
-                    }
-                }else{
-                    mDataSendFlag   = 0;
-                    mRequestState   = REQUEST_DATA_CLEAR;
-                    TimeHandlerHeat(false, TIMER_NULL);
-                    mProgressDialog.Dismiss();
+            } else {
+                mDataSendFlag = 0;
+                mHeatGroupFlag = 0;
+                mHeatGroupState = "";
+                mHeatGroupData = "";
+                mRequestState = REQUEST_DATA_CLEAR;
+                TimeHandlerHeat(false, TIMER_NULL);
+                TimeHandlerHeatGroup(false, TIMER_NULL);
+                mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(HeatActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
                 }
             }
-        }else{
-            mDataSendFlag   = 0;
-            mHeatGroupFlag  = 0;
+        } else {
+            mDataSendFlag = 0;
+            mHeatGroupFlag = 0;
             mHeatGroupState = "";
-            mHeatGroupData  = "";
-            mRequestState   = REQUEST_DATA_CLEAR;
+            mHeatGroupData = "";
+            mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerHeat(false, TIMER_NULL);
             TimeHandlerHeatGroup(false, TIMER_NULL);
             mProgressDialog.Dismiss();
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(HeatActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************
@@ -943,21 +955,38 @@ public class HeatActivity extends Activity{
      * @param tKDData
      */
     private void HeatControlResult(KDData tKDData){
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            mDataSendFlag = 1;
-        }else{
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                /*
+                mWaitCount = 0;
+                mDataSendFlag = 0;
+                mRequestState = REQUEST_DATA_CLEAR;
+                TimeHandlerHeat(false, TIMER_NULL);
+                mProgressDialog.Dismiss();
+                TimeHandlerHeatGroup(false, TIMER_NULL);
+                 */
+                mDataSendFlag = 1;
+            } else {
+                mWaitCount = 0;
+                mDataSendFlag = 0;
+                mRequestState = REQUEST_DATA_CLEAR;
+                TimeHandlerHeat(false, TIMER_NULL);
+                mProgressDialog.Dismiss();
+                TimeHandlerHeatGroup(false, TIMER_NULL);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(HeatActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            }
+        } else {
             mWaitCount = 0;
             mDataSendFlag = 0;
             mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerHeat(false, TIMER_NULL);
             mProgressDialog.Dismiss();
             TimeHandlerHeatGroup(false, TIMER_NULL);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(HeatActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************
@@ -966,7 +995,6 @@ public class HeatActivity extends Activity{
     /**
      * @breif slide menu bar find menu
      * @param tFind
-     * @return
      */
     private boolean DeviceFind(String tFind){
         for(int i = 0; i < mMyGlobal.GlobalDeviceList.size(); i++){
@@ -1038,7 +1066,7 @@ public class HeatActivity extends Activity{
     //**********************************************************************************************
     /**
      * @breif hnml data parser heat
-     * @param String tContents
+     * @param tContents String
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void HNMLDataParserHeat(String tContents) {
@@ -1420,8 +1448,8 @@ public class HeatActivity extends Activity{
         }
 
         if(hotWater.equals("None")){
-            txtHotWater.setBackgroundTintList(getResources().getColorStateList(R.color.colorfafafa));
-            txtHotWater.setTextColor(getResources().getColor(R.color.colorb8b8b8));
+            txtHotWater.setBackgroundTintList(getResources().getColorStateList(R.color.colorfefefe));
+            txtHotWater.setTextColor(getResources().getColor(R.color.colore8e8e8));
             txtHotWater.setSelected(false);
         }else if(hotWater.equals("On")){
             txtHotWater.setBackgroundResource(R.drawable.shape_stroke_corner_50dp);
@@ -1652,6 +1680,7 @@ public class HeatActivity extends Activity{
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mHeatPosition = position;
                 if (mArrayGroupID.size() > 1) {
                     if (position == 0) {
                         //HeatTempControlRequest("All", mHeatSetTemp);

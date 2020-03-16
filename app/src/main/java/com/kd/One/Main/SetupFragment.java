@@ -144,6 +144,10 @@ public class SetupFragment extends Fragment implements View.OnClickListener{
         mLayoutVersion          = (ViewGroup)getActivity().findViewById(R.id.Setup_LinearLayout_Version);
         mLayoutUser             = (ViewGroup)getActivity().findViewById(R.id.Setup_LinearLayout_User);
         mLayoutAgree             = (ViewGroup)getActivity().findViewById(R.id.Setup_LinearLayout_Agree);
+
+        // MARK : JMH -2020-03-16 default 푸시 표시하지 않음
+        mLayoutPush.setVisibility(View.GONE);
+
         if (null != mLocalConfig.getStringValue(Constants.SAVE_DATA_USE_PUSH)) {
             if (mLocalConfig.getStringValue(Constants.SAVE_DATA_USE_PUSH).equals("Y")) {
                 mLayoutPush.setVisibility(View.VISIBLE);
@@ -396,16 +400,19 @@ public class SetupFragment extends Fragment implements View.OnClickListener{
         mWaitCount = 0;
         mProgressDialog.Dismiss();
         TimeHandlerSetup(false, TIMER_NULL);
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            Intent intent = new Intent(getActivity(), LoginActivity.class);
-            startActivity(intent);
-            getActivity().finish();
-        }else{
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            } else {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }
@@ -420,19 +427,22 @@ public class SetupFragment extends Fragment implements View.OnClickListener{
         mWaitCount = 0;
         mProgressDialog.Dismiss();
         TimeHandlerSetup(false, TIMER_NULL);
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
-                        getString(R.string.Setup_popup_withdrawal_title), getString(R.string.Setup_popup_withdrawal_contents_success),
-                        mPopupListenerWithdrawalSuccess);
-                mCustomPopup.show();
-            }
-        }else{
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
+                            getString(R.string.Setup_popup_withdrawal_title), getString(R.string.Setup_popup_withdrawal_contents_success),
+                            mPopupListenerWithdrawalSuccess);
+                    mCustomPopup.show();
+                }
+            } else {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }

@@ -627,102 +627,118 @@ public class StandbypowerActivity extends Activity{
      * @param tKDData
      */
     private void StandbypowerStateResult(KDData tKDData){
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            HNMLDataParserStandbypower(tKDData.ReceiveString);
-            if(mStandbypowerEachGroupFlag == 1){
-                // EACH SELECT
-                if(mStandbypowerDataSend.equals(STANDBYPOWER_STATE)){
-                    if(mArrayPowerSupply.get(mStandbypowerPosition).equals(mStandbypowerData)){
-                        mProgressDialog.Dismiss();
-                        mWaitGroupCount = 0;
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                HNMLDataParserStandbypower(tKDData.ReceiveString);
+                if (mStandbypowerEachGroupFlag == 1) {
+                    // EACH SELECT
+                    if (mStandbypowerDataSend.equals(STANDBYPOWER_STATE)) {
+                        if (mArrayPowerSupply.get(mStandbypowerPosition).equals(mStandbypowerData)) {
+                            mProgressDialog.Dismiss();
+                            mWaitGroupCount = 0;
+                            mWaitCount = 0;
+                            mDataSendFlag = 0;
+                            mRequestState = REQUEST_DATA_CLEAR;
+                            TimeHandlerStandbypower(false, TIMER_NULL);
+                            TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
+                        } else {
+                            mDataSendFlag = 1;
+                        }
+                    } else if (mStandbypowerDataSend.equals(STANDBYPOWER_AUTO_BLOCK)) {
+                        if (mArrayAutoBlock.get(mStandbypowerPosition).equals(mStandbypowerData)) {
+                            mProgressDialog.Dismiss();
+                            mWaitGroupCount = 0;
+                            mWaitCount = 0;
+                            mDataSendFlag = 0;
+                            mRequestState = REQUEST_DATA_CLEAR;
+                            TimeHandlerStandbypower(false, TIMER_NULL);
+                            TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
+                        } else {
+                            mDataSendFlag = 1;
+                        }
+                    } else {
                         mWaitCount = 0;
                         mDataSendFlag = 0;
                         mRequestState = REQUEST_DATA_CLEAR;
                         TimeHandlerStandbypower(false, TIMER_NULL);
-                        TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
-                    }else{
-                        mDataSendFlag = 1;
-                    }
-                }else if(mStandbypowerDataSend.equals(STANDBYPOWER_AUTO_BLOCK)){
-                    if(mArrayAutoBlock.get(mStandbypowerPosition).equals(mStandbypowerData)){
-                        mProgressDialog.Dismiss();
                         mWaitGroupCount = 0;
+                        mStandbypowerEachGroupFlag = 0;
+                        TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
+                        mProgressDialog.Dismiss();
+                    }
+                } else if (mStandbypowerEachGroupFlag == 2) {
+                    // GROUP SELECT
+                    if (mStandbypowerDataSend.equals(STANDBYPOWER_STATE)) {
+                        for (int i = 0; i < mArrayPowerSupply.size(); i++) {
+                            if (!mArrayPowerSupply.get(i).equals(mStandbypowerData)) {
+                                mDataSendFlag = 1;
+                                break;
+                            } else {
+                                if (mArrayPowerSupply.size() - 1 == i) {
+                                    mProgressDialog.Dismiss();
+                                    mWaitCount = 0;
+                                    mRequestState = REQUEST_DATA_CLEAR;
+                                    TimeHandlerStandbypower(false, TIMER_NULL);
+                                    mWaitGroupCount = 0;
+                                    mDataSendFlag = 0;
+                                    mStandbypowerEachGroupFlag = 0;
+                                    TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
+                                }
+                            }
+                        }
+                    } else if (mStandbypowerDataSend.equals(STANDBYPOWER_AUTO_BLOCK)) {
+                        for (int i = 0; i < mArrayPowerSupply.size(); i++) {
+                            if (!mArrayAutoBlock.get(i).equals(mStandbypowerData)) {
+                                mDataSendFlag = 1;
+                                break;
+                            } else {
+                                if (mArrayAutoBlock.size() - 1 == i) {
+                                    mProgressDialog.Dismiss();
+                                    mWaitCount = 0;
+                                    mDataSendFlag = 0;
+                                    mRequestState = REQUEST_DATA_CLEAR;
+                                    TimeHandlerStandbypower(false, TIMER_NULL);
+                                    mWaitGroupCount = 0;
+                                    mStandbypowerEachGroupFlag = 0;
+                                    TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
+                                }
+                            }
+                        }
+                    } else {
                         mWaitCount = 0;
                         mDataSendFlag = 0;
                         mRequestState = REQUEST_DATA_CLEAR;
                         TimeHandlerStandbypower(false, TIMER_NULL);
+                        mProgressDialog.Dismiss();
+                        mWaitGroupCount = 0;
+                        mStandbypowerEachGroupFlag = 0;
                         TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
-                    }else{
-                        mDataSendFlag = 1;
                     }
-                }else{
+                } else {
                     mWaitCount = 0;
                     mDataSendFlag = 0;
                     mRequestState = REQUEST_DATA_CLEAR;
                     TimeHandlerStandbypower(false, TIMER_NULL);
                     mWaitGroupCount = 0;
-                    mStandbypowerEachGroupFlag = 0;
                     TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
                     mProgressDialog.Dismiss();
                 }
-            } else if(mStandbypowerEachGroupFlag == 2){
-                // GROUP SELECT
-                if(mStandbypowerDataSend.equals(STANDBYPOWER_STATE)){
-                    for(int i = 0; i < mArrayPowerSupply.size(); i++){
-                        if(!mArrayPowerSupply.get(i).equals(mStandbypowerData)){
-                            mDataSendFlag = 1;
-                            break;
-                        }else{
-                            if(mArrayPowerSupply.size() - 1 == i){
-                                mProgressDialog.Dismiss();
-                                mWaitCount = 0;
-                                mRequestState = REQUEST_DATA_CLEAR;
-                                TimeHandlerStandbypower(false, TIMER_NULL);
-                                mWaitGroupCount = 0;
-                                mDataSendFlag = 0;
-                                mStandbypowerEachGroupFlag = 0;
-                                TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
-                            }
-                        }
-                    }
-                }else if(mStandbypowerDataSend.equals(STANDBYPOWER_AUTO_BLOCK)){
-                    for(int i = 0; i < mArrayPowerSupply.size(); i++){
-                        if(!mArrayAutoBlock.get(i).equals(mStandbypowerData)){
-                            mDataSendFlag = 1;
-                            break;
-                        }else{
-                            if(mArrayAutoBlock.size() - 1 == i){
-                                mProgressDialog.Dismiss();
-                                mWaitCount = 0;
-                                mDataSendFlag = 0;
-                                mRequestState = REQUEST_DATA_CLEAR;
-                                TimeHandlerStandbypower(false, TIMER_NULL);
-                                mWaitGroupCount = 0;
-                                mStandbypowerEachGroupFlag = 0;
-                                TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
-                            }
-                        }
-                    }
-                }else{
-                    mWaitCount = 0;
-                    mDataSendFlag = 0;
-                    mRequestState = REQUEST_DATA_CLEAR;
-                    TimeHandlerStandbypower(false, TIMER_NULL);
-                    mProgressDialog.Dismiss();
-                    mWaitGroupCount = 0;
-                    mStandbypowerEachGroupFlag = 0;
-                    TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
-                }
-            }else {
+            } else {
                 mWaitCount = 0;
                 mDataSendFlag = 0;
                 mRequestState = REQUEST_DATA_CLEAR;
                 TimeHandlerStandbypower(false, TIMER_NULL);
+                mProgressDialog.Dismiss();
                 mWaitGroupCount = 0;
                 TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
-                mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(StandbypowerActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
-        } else{
+        } else {
             mWaitCount = 0;
             mDataSendFlag = 0;
             mRequestState = REQUEST_DATA_CLEAR;
@@ -730,12 +746,6 @@ public class StandbypowerActivity extends Activity{
             mProgressDialog.Dismiss();
             mWaitGroupCount = 0;
             TimeHandlerStandbypowerEachGroup(false, TIMER_NULL);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(StandbypowerActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************
@@ -747,21 +757,30 @@ public class StandbypowerActivity extends Activity{
      */
     private void StandbypowerControlResult(KDData tKDData){
 
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            mRequestState = REQUEST_DATA_SEND_START;
-        }else{
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                mRequestState = REQUEST_DATA_SEND_START;
+            } else {
+                mWaitCount = 0;
+                mDataSendFlag = 0;
+                mRequestState = REQUEST_DATA_CLEAR;
+                TimeHandlerStandbypower(false, TIMER_NULL);
+                mProgressDialog.Dismiss();
+                mWaitGroupCount = 0;
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(StandbypowerActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            }
+        } else {
             mWaitCount = 0;
             mDataSendFlag = 0;
             mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerStandbypower(false, TIMER_NULL);
             mProgressDialog.Dismiss();
             mWaitGroupCount = 0;
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(StandbypowerActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************

@@ -437,21 +437,23 @@ public class CertifyActivity extends Activity {
         mProgressDialog.Dismiss();
         TimeHandlerCertify(false, TIMER_NULL);
 
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            //mCertifyEditText.setFocusableInTouchMode(true);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_request_success),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
-        }else{
-            //mCertifyEditText.setFocusableInTouchMode(false);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_request_fail),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                //mCertifyEditText.setFocusableInTouchMode(true);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_request_success),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            } else {
+                //mCertifyEditText.setFocusableInTouchMode(false);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_request_fail),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }
@@ -473,20 +475,22 @@ public class CertifyActivity extends Activity {
             mProgressDialog.Dismiss();
             TimeHandlerCertify(false, TIMER_NULL);
 
-            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
-                mLocalConfig.setValue(Constants.SAVE_DATA_ID, mCertifyID);
-                if (mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_success),
-                            mPopupListenerSuccess);
-                    mCustomPopup.show();
-                }
-            } else {
-                if (mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_fail),
-                            mPopupListenerOK);
-                    mCustomPopup.show();
+            if (tKDData != null) {
+                if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                    mLocalConfig.setValue(Constants.SAVE_DATA_ID, mCertifyID);
+                    if (mCustomPopup == null) {
+                        mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
+                                getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_success),
+                                mPopupListenerSuccess);
+                        mCustomPopup.show();
+                    }
+                } else {
+                    if (mCustomPopup == null) {
+                        mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
+                                getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_fail),
+                                mPopupListenerOK);
+                        mCustomPopup.show();
+                    }
                 }
             }
         }
@@ -534,20 +538,22 @@ public class CertifyActivity extends Activity {
         mProgressDialog.Dismiss();
         TimeHandlerCertify(false, TIMER_NULL);
 
-        if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
-            mLocalConfig.setValue(Constants.SAVE_DATA_ID, mCertifyID);
-            if (mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_success),
-                        mPopupListenerSuccess);
-                mCustomPopup.show();
-            }
-        } else {
-            if (mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_fail),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+        if (tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                mLocalConfig.setValue(Constants.SAVE_DATA_ID, mCertifyID);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_success),
+                            mPopupListenerSuccess);
+                    mCustomPopup.show();
+                }
+            } else {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(CertifyActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Certify_popup_title), getString(R.string.Certify_popup_certify_fail),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }

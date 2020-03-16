@@ -607,70 +607,81 @@ public class VentilationActivity extends Activity{
      * @param tKDData
      */
     private void VentilationStateResult(KDData tKDData){
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            HNMLDataParserVentilation(tKDData.ReceiveString);
-            if(mVentilationGroupFlag == 1) {
-                // Each control
-                if(mVentilationSendData.equals(mArrayState.get(mVentilationPosition))){
-                    mWaitGroupCount         = 0;
-                    mVentilationGroupFlag   = 0;
-                    mProgressDialog.Dismiss();
-                    mWaitCount = 0;
-                    mDataSendFlag = 0;
-                    mRequestState = REQUEST_DATA_CLEAR;
-                    TimeHandlerVentilation(false, TIMER_NULL);
-                    TimeHandlerVentilationGroup(false, TIMER_NULL);
-                }else{
-                    mDataSendFlag = 1;
-                    Log.e("ventilation", "fail");
-                }
-            } else if(mVentilationGroupFlag == 2){
-                // Group control
-                for(int i = 0; i < mArrayState.size(); i++){
-                    if(!mArrayState.get(i).equals(mVentilationSendData)){
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                HNMLDataParserVentilation(tKDData.ReceiveString);
+                if (mVentilationGroupFlag == 1) {
+                    // Each control
+                    if (mVentilationSendData.equals(mArrayState.get(mVentilationPosition))) {
+                        mWaitGroupCount = 0;
+                        mVentilationGroupFlag = 0;
+                        mProgressDialog.Dismiss();
+                        mWaitCount = 0;
+                        mDataSendFlag = 0;
+                        mRequestState = REQUEST_DATA_CLEAR;
+                        TimeHandlerVentilation(false, TIMER_NULL);
+                        TimeHandlerVentilationGroup(false, TIMER_NULL);
+                    } else {
                         mDataSendFlag = 1;
-                        Log.e("ventilation", "group fail");
-                        break;
-                    }else{
-                        if(mArrayState.size()-1 == i){
-                            mDataSendFlag           = 0;
-                            mWaitGroupCount         = 0;
-                            mVentilationGroupFlag   = 0;
-                            mProgressDialog.Dismiss();
+                        Log.e("ventilation", "fail");
+                    }
+                } else if (mVentilationGroupFlag == 2) {
+                    // Group control
+                    for (int i = 0; i < mArrayState.size(); i++) {
+                        if (!mArrayState.get(i).equals(mVentilationSendData)) {
+                            mDataSendFlag = 1;
+                            Log.e("ventilation", "group fail");
+                            break;
+                        } else {
+                            if (mArrayState.size() - 1 == i) {
+                                mDataSendFlag = 0;
+                                mWaitGroupCount = 0;
+                                mVentilationGroupFlag = 0;
+                                mProgressDialog.Dismiss();
 
-                            mWaitCount = 0;
-                            mRequestState = REQUEST_DATA_CLEAR;
-                            TimeHandlerVentilation(false, TIMER_NULL);
-                            TimeHandlerVentilationGroup(false, TIMER_NULL);
+                                mWaitCount = 0;
+                                mRequestState = REQUEST_DATA_CLEAR;
+                                TimeHandlerVentilation(false, TIMER_NULL);
+                                TimeHandlerVentilationGroup(false, TIMER_NULL);
+                            }
                         }
                     }
-                }
-            }else {
-                mDataSendFlag           = 0;
-                mWaitCount              = 0;
-                mWaitGroupCount         = 0;
-                mVentilationGroupFlag   = 0;
-                mRequestState           = REQUEST_DATA_CLEAR;
-                mProgressDialog.Dismiss();
+                } else {
+                    mDataSendFlag = 0;
+                    mWaitCount = 0;
+                    mWaitGroupCount = 0;
+                    mVentilationGroupFlag = 0;
+                    mRequestState = REQUEST_DATA_CLEAR;
+                    mProgressDialog.Dismiss();
 
+                    TimeHandlerVentilation(false, TIMER_NULL);
+                    TimeHandlerVentilationGroup(false, TIMER_NULL);
+                }
+            } else {
+                mWaitCount = 0;
+                mDataSendFlag = 0;
+                mWaitGroupCount = 0;
+                mVentilationGroupFlag = 0;
+                mProgressDialog.Dismiss();
+                mRequestState = REQUEST_DATA_CLEAR;
                 TimeHandlerVentilation(false, TIMER_NULL);
                 TimeHandlerVentilationGroup(false, TIMER_NULL);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(VentilationActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
-        } else{
+        } else {
             mWaitCount = 0;
-            mDataSendFlag           = 0;
-            mWaitGroupCount         = 0;
-            mVentilationGroupFlag   = 0;
+            mDataSendFlag = 0;
+            mWaitGroupCount = 0;
+            mVentilationGroupFlag = 0;
             mProgressDialog.Dismiss();
             mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerVentilation(false, TIMER_NULL);
             TimeHandlerVentilationGroup(false, TIMER_NULL);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(VentilationActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************
@@ -681,23 +692,34 @@ public class VentilationActivity extends Activity{
      * @param tKDData
      */
     private void VentilationControlResult(KDData tKDData){
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            mDataSendFlag = 1;
-        }else{
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                mDataSendFlag = 1;
+            } else {
+                mWaitCount = 0;
+                mDataSendFlag = 0;
+                mWaitGroupCount = 0;
+                mVentilationGroupFlag = 0;
+                mProgressDialog.Dismiss();
+                mRequestState = REQUEST_DATA_CLEAR;
+                TimeHandlerVentilation(false, TIMER_NULL);
+                TimeHandlerVentilationGroup(false, TIMER_NULL);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(VentilationActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            }
+        } else {
             mWaitCount = 0;
-            mDataSendFlag           = 0;
-            mWaitGroupCount         = 0;
-            mVentilationGroupFlag   = 0;
+            mDataSendFlag = 0;
+            mWaitGroupCount = 0;
+            mVentilationGroupFlag = 0;
             mProgressDialog.Dismiss();
             mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerVentilation(false, TIMER_NULL);
             TimeHandlerVentilationGroup(false, TIMER_NULL);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(VentilationActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************

@@ -407,25 +407,27 @@ public class RegistActivity extends Activity {
         mProgressDialog.Dismiss();
         TimeHandlerRegistration(false, TIMER_NULL);
 
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            // id duplication
-            mRegistIDDuplicationFlag = false;
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                // id duplication
+                mRegistIDDuplicationFlag = false;
 
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(RegistActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Regist_popup_title), getString(R.string.Regist_popup_id_use_fail),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
-        }else{
-            // id null
-            mRegistIDDuplicationFlag = true;
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(RegistActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Regist_popup_title), getString(R.string.Regist_popup_id_use_fail),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            } else {
+                // id null
+                mRegistIDDuplicationFlag = true;
 
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(RegistActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Regist_popup_title), getString(R.string.Regist_popup_id_use_success),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(RegistActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Regist_popup_title), getString(R.string.Regist_popup_id_use_success),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }
@@ -442,28 +444,30 @@ public class RegistActivity extends Activity {
         mProgressDialog.Dismiss();
         TimeHandlerRegistration(false, TIMER_NULL);
 
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            mLocalConfig.setValue(Constants.SAVE_DATA_PW, mRegistEditTextPW.getText().toString());
-            mLocalConfig.setValue(Constants.SAVE_DATA_DONG, mRegistEditTextDong.getText().toString());
-            mLocalConfig.setValue(Constants.SAVE_DATA_HO, mRegistEditTextHo.getText().toString());
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                mLocalConfig.setValue(Constants.SAVE_DATA_PW, mRegistEditTextPW.getText().toString());
+                mLocalConfig.setValue(Constants.SAVE_DATA_DONG, mRegistEditTextDong.getText().toString());
+                mLocalConfig.setValue(Constants.SAVE_DATA_HO, mRegistEditTextHo.getText().toString());
 
-            Intent intent = new Intent(RegistActivity.this, CertifyActivity.class);
-            intent.putExtra(Constants.INTENT_LOGIN_ID, mRegistEditTextID.getText().toString());
-            startActivity(intent);
-            finish();
-        }else if(tKDData.Result.equals("5008")){
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(RegistActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Regist_popup_reg_title), getString(R.string.Regist_popup_max_member),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
-        }else{
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(RegistActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Regist_popup_reg_title), getString(R.string.Regist_popup_request_fail),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+                Intent intent = new Intent(RegistActivity.this, CertifyActivity.class);
+                intent.putExtra(Constants.INTENT_LOGIN_ID, mRegistEditTextID.getText().toString());
+                startActivity(intent);
+                finish();
+            } else if (tKDData.Result.equals("5008")) {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(RegistActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Regist_popup_reg_title), getString(R.string.Regist_popup_max_member),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            } else {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(RegistActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Regist_popup_reg_title), getString(R.string.Regist_popup_request_fail),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }

@@ -110,8 +110,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
-                            android:textColor="@color/colorb8b8b8"
-                            android:text="상세보기"/>
+                            android:textSize="10dp"
+                            android:text="상세보기"
+                            android:textColor="@color/colorb8b8b8" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -148,6 +149,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
                             android:textColor="@color/colorb8b8b8"
+                            android:textSize="10dp"
                             android:text="@string/Agree_check_detail"/>
                     </LinearLayout>
                 </LinearLayout>

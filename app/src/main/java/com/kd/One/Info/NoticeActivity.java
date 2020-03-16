@@ -447,19 +447,23 @@ public class NoticeActivity extends Activity implements AbsListView.OnScrollList
         mWaitCount  = 0;
         mDataTry    = false;
         TimeHandlerNotice(false, TIMER_NULL);
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            mStringInfoContents = tKDData.ReceiveString;
-            HNMLDataParserNotice(tKDData.ReceiveString);
-            mLockListView = false;
-            mProgressDialog.Dismiss();
-        }else{
-            mProgressDialog.Dismiss();
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(NoticeActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                mStringInfoContents = tKDData.ReceiveString;
+                HNMLDataParserNotice(tKDData.ReceiveString);
+                mLockListView = false;
+                mProgressDialog.Dismiss();
+            } else {
+                mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(NoticeActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
+        } else {
+            mProgressDialog.Dismiss();
         }
     }
     //**********************************************************************************************

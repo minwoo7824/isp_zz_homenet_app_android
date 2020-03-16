@@ -579,48 +579,59 @@ public class MainFragment extends FragmentActivity{
      * @breif Security state request result
      */
     private void SecurityStateResult(KDData tKDData) {
-        if(null != tKDData.Result) {
-            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
-                HNMLDataParserSecurity(tKDData.ReceiveString);
-                if (mControlFlag == 0) {
-                    mWaitCount = 0;
-                    mRequestState = REQUEST_DATA_CLEAR;
-                    TimeHandlerSecurity(false, TIMER_NULL);
-                    mProgressDialog.Dismiss();
-                    mControlFlag = 0;
-                    mDataSendFlag = 0;
-                    Log.e("security state result", "success");
-                } else {
-                    if (mSecurityState.equals("1")) {
+        if (tKDData != null) {
+            if (null != tKDData.Result) {
+                if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                    HNMLDataParserSecurity(tKDData.ReceiveString);
+                    if (mControlFlag == 0) {
                         mWaitCount = 0;
                         mRequestState = REQUEST_DATA_CLEAR;
                         TimeHandlerSecurity(false, TIMER_NULL);
                         mProgressDialog.Dismiss();
                         mControlFlag = 0;
                         mDataSendFlag = 0;
-                        Log.e("security state result", "control success");
+                        Log.e("security state result", "success");
                     } else {
-                        //                    mRequestState = REQUEST_DATA_SEND_START;
-                        //                    SecurityStateRequest();
-                        mDataSendFlag = 1;
-                        Log.e("security state result", "control fail");
+                        if (mSecurityState.equals("1")) {
+                            mWaitCount = 0;
+                            mRequestState = REQUEST_DATA_CLEAR;
+                            TimeHandlerSecurity(false, TIMER_NULL);
+                            mProgressDialog.Dismiss();
+                            mControlFlag = 0;
+                            mDataSendFlag = 0;
+                            Log.e("security state result", "control success");
+                        } else {
+                            //mRequestState = REQUEST_DATA_SEND_START;
+                            //SecurityStateRequest();
+                            mDataSendFlag = 1;
+                            Log.e("security state result", "control fail");
+                        }
+                    }
+
+                } else {
+                    mWaitCount = 0;
+                    mRequestState = REQUEST_DATA_CLEAR;
+                    TimeHandlerSecurity(false, TIMER_NULL);
+                    mProgressDialog.Dismiss();
+                    mControlFlag = 0;
+                    mDataSendFlag = 0;
+                    if (mCustomPopup == null) {
+                        mCustomPopup = new CustomPopupBasic(MainFragment.this, R.layout.popup_basic_onebutton,
+                                getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                                mPopupListenerOK);
+                        mCustomPopup.show();
                     }
                 }
-
-            } else {
-                mWaitCount = 0;
-                mRequestState = REQUEST_DATA_CLEAR;
-                TimeHandlerSecurity(false, TIMER_NULL);
-                mProgressDialog.Dismiss();
-                mControlFlag = 0;
-                mDataSendFlag = 0;
-                if (mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(MainFragment.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                            mPopupListenerOK);
-                    mCustomPopup.show();
-                }
             }
+        } else {
+            Log.e("security state result", "tKDData null fail");
+
+            mWaitCount = 0;
+            mRequestState = REQUEST_DATA_CLEAR;
+            TimeHandlerSecurity(false, TIMER_NULL);
+            mProgressDialog.Dismiss();
+            mControlFlag = 0;
+            mDataSendFlag = 0;
         }
     }
     //**********************************************************************************************
@@ -647,23 +658,42 @@ public class MainFragment extends FragmentActivity{
      * @breif Security control request result
      */
     private void SecurityControlResult(KDData tKDData) {
-        if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
-            HNMLDataParserSecurity(tKDData.ReceiveString);
-            if (mSecurityState.equals("1")) {
+        if (tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                HNMLDataParserSecurity(tKDData.ReceiveString);
+                if (mSecurityState.equals("1")) {
+                    mWaitCount = 0;
+                    mRequestState = REQUEST_DATA_CLEAR;
+                    TimeHandlerSecurity(false, TIMER_NULL);
+                    //mProgressDialog.Dismiss();
+                    mControlFlag = 0;
+                    mDataSendFlag = 0;
+
+                    mRequestState = REQUEST_DATA_SEND_START;
+                    SecurityStateRequest();
+
+                    Log.e("security control result", "control result success");
+                } else {
+                    //mRequestState = REQUEST_DATA_SEND_START;
+                    //SecurityStateRequest();
+                    mDataSendFlag = 1;
+                    Log.e("security control result", "fail");
+                }
+
+            } else {
                 mWaitCount = 0;
                 mRequestState = REQUEST_DATA_CLEAR;
                 TimeHandlerSecurity(false, TIMER_NULL);
                 mProgressDialog.Dismiss();
                 mControlFlag = 0;
                 mDataSendFlag = 0;
-                Log.e("security control result", "control result success");
-            } else {
-                //mRequestState = REQUEST_DATA_SEND_START;
-                //SecurityStateRequest();
-                mDataSendFlag = 1;
-                Log.e("security control result", "fail");
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(MainFragment.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Security_popup_out_fail_title), getString(R.string.Security_popup_out_fail_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
-
         } else {
             mWaitCount = 0;
             mRequestState = REQUEST_DATA_CLEAR;
@@ -671,12 +701,6 @@ public class MainFragment extends FragmentActivity{
             mProgressDialog.Dismiss();
             mControlFlag = 0;
             mDataSendFlag = 0;
-            if (mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(MainFragment.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Security_popup_out_fail_title), getString(R.string.Security_popup_out_fail_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************

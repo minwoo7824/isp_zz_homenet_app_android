@@ -419,30 +419,32 @@ public class VisitorActivity extends Activity{
         mProgressDialog.Dismiss();
         mRequestState = REQUEST_DATA_CLEAR;
         TimeHandlerVisitor(false, TIMER_NULL);
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            Log.e("Visit Activity", "Video List Response success");
-            HNMLParserVisitList(tKDData.ReceiveString);
-            if(mArrayVideoID.size() == 0) {
-                if(mCustomPopup == null) {
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                Log.e("Visit Activity", "Video List Response success");
+                HNMLParserVisitList(tKDData.ReceiveString);
+                if (mArrayVideoID.size() == 0) {
+                    if (mCustomPopup == null) {
+                        mCustomPopup = new CustomPopupBasic(VisitorActivity.this, R.layout.popup_basic_onebutton,
+                                getString(R.string.Visitor_popup_title), getString(R.string.Visitor_popup_contents),
+                                mPopupListenerNone);
+                        mCustomPopup.show();
+                    }
+                }
+            } else if (tKDData.Result.equals(Constants.HNML_RESULT_COMMUNICATION_ERROR)) {
+                if (mCustomPopup == null) {
                     mCustomPopup = new CustomPopupBasic(VisitorActivity.this, R.layout.popup_basic_onebutton,
-                            getString(R.string.Visitor_popup_title), getString(R.string.Visitor_popup_contents),
-                            mPopupListenerNone);
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerOK);
                     mCustomPopup.show();
                 }
-            }
-        }else if (tKDData.Result.equals(Constants.HNML_RESULT_COMMUNICATION_ERROR)){
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(VisitorActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
-        }else{
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(VisitorActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+            } else {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(VisitorActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }

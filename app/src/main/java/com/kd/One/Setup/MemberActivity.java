@@ -460,18 +460,21 @@ public class MemberActivity extends Activity {
         mWaitCount = 0;
         mProgressDialog.Dismiss();
         TimeHandlerMember(false, TIMER_NULL);
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            mLocalConfig.setValue(Constants.SAVE_DATA_LOGIN_STATUS,-1);
-            Intent intent = new Intent(MemberActivity.this, LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        }else{
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(MemberActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                mLocalConfig.setValue(Constants.SAVE_DATA_LOGIN_STATUS, -1);
+                Intent intent = new Intent(MemberActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            } else {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(MemberActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }
@@ -486,19 +489,22 @@ public class MemberActivity extends Activity {
         mWaitCount = 0;
         mProgressDialog.Dismiss();
         TimeHandlerMember(false, TIMER_NULL);
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(MemberActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Setup_popup_withdrawal_title), getString(R.string.Setup_popup_withdrawal_contents_success),
-                        mPopupListenerWithdrawalSuccess);
-                mCustomPopup.show();
-            }
-        }else{
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(MemberActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(MemberActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Setup_popup_withdrawal_title), getString(R.string.Setup_popup_withdrawal_contents_success),
+                            mPopupListenerWithdrawalSuccess);
+                    mCustomPopup.show();
+                }
+            } else {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(MemberActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }
@@ -535,22 +541,26 @@ public class MemberActivity extends Activity {
         mRequestState = REQUEST_DATA_CLEAR;
         TimeHandlerMember(false, TIMER_NULL);
 
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            mProgressDialog.Dismiss();
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(MemberActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Member_popup_title), getString(R.string.Member_popup_chnage_success_contents),
-                        mPopupListenerSuccess);
-                mCustomPopup.show();
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(MemberActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Member_popup_title), getString(R.string.Member_popup_chnage_success_contents),
+                            mPopupListenerSuccess);
+                    mCustomPopup.show();
+                }
+            } else {
+                mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(MemberActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                            mPopupListenerError);
+                    mCustomPopup.show();
+                }
             }
-        }else{
+        } else {
             mProgressDialog.Dismiss();
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(MemberActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                        mPopupListenerError);
-                mCustomPopup.show();
-            }
         }
     }
 

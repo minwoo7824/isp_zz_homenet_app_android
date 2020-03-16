@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ISP_HOMENET_APP_Android_Bitbucket.iml" filepath="$PROJECT_DIR$/ISP_HOMENET_APP_Android_Bitbucket.iml" group="ISP_HOMENET_APP_Android_Bitbucket" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="ISP_HOMENET_APP_Android_Bitbucket/app" />
       <module fileurl="file://$PROJECT_DIR$/fingerpush_3.1.5/fingerpush_3.1.5.iml" filepath="$PROJECT_DIR$/fingerpush_3.1.5/fingerpush_3.1.5.iml" group="ISP_HOMENET_APP_Android_Bitbucket/fingerpush_3.1.5" />
+      <module fileurl="file://$PROJECT_DIR$/isp_zz_homenet_app_android.iml" filepath="$PROJECT_DIR$/isp_zz_homenet_app_android.iml" />
     </modules>
   </component>
 </project>

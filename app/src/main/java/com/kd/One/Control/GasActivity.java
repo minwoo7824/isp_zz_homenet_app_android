@@ -564,62 +564,71 @@ public class GasActivity extends Activity{
      * @param tKDData
      */
     private void GasStateResult(KDData tKDData){
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            HNMLDataParserGas(tKDData.ReceiveString);
-            if(mGasGroupFlag == 1){
-                for(int i = 0; i < mArrayState.size(); i++){
-                    if(!mArrayState.get(i).equals("Close")){
-                        //mRequestState   = REQUEST_DATA_SEND_START;
-                        mDataSendFlag = 1;
-                        break;
-                    }else{
-                        if(mArrayState.size()-1 == i){
-                            TimeHandlerGasEachGroup(false, TIMER_NULL);
-                            mGasEachFlag = 0;
-                            mGasGroupFlag = 0;
-                            mDataSendFlag = 0;
-                            mProgressDialog.Dismiss();
-                            mWaitCount = 0;
-                            mRequestState = REQUEST_DATA_CLEAR;
-                            TimeHandlerGas(false, TIMER_NULL);
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                HNMLDataParserGas(tKDData.ReceiveString);
+                if (mGasGroupFlag == 1) {
+                    for (int i = 0; i < mArrayState.size(); i++) {
+                        if (!mArrayState.get(i).equals("Close")) {
+                            //mRequestState   = REQUEST_DATA_SEND_START;
+                            mDataSendFlag = 1;
+                            break;
+                        } else {
+                            if (mArrayState.size() - 1 == i) {
+                                TimeHandlerGasEachGroup(false, TIMER_NULL);
+                                mGasEachFlag = 0;
+                                mGasGroupFlag = 0;
+                                mDataSendFlag = 0;
+                                mProgressDialog.Dismiss();
+                                mWaitCount = 0;
+                                mRequestState = REQUEST_DATA_CLEAR;
+                                TimeHandlerGas(false, TIMER_NULL);
+                            }
                         }
                     }
-                }
-            }else if(mGasEachFlag == 1){
-                if(!mArrayState.get(mGasPosition).equals("Close")){
-                    //mRequestState   = REQUEST_DATA_SEND_START;
-                    mDataSendFlag = 1;
-                }else{
-                    TimeHandlerGasEachGroup(false, TIMER_NULL);
-                    mGasEachFlag = 0;
-                    mGasGroupFlag = 0;
-                    mDataSendFlag = 0;
+                } else if (mGasEachFlag == 1) {
+                    if (!mArrayState.get(mGasPosition).equals("Close")) {
+                        //mRequestState   = REQUEST_DATA_SEND_START;
+                        mDataSendFlag = 1;
+                    } else {
+                        TimeHandlerGasEachGroup(false, TIMER_NULL);
+                        mGasEachFlag = 0;
+                        mGasGroupFlag = 0;
+                        mDataSendFlag = 0;
+                        mProgressDialog.Dismiss();
+                        mWaitCount = 0;
+                        mRequestState = REQUEST_DATA_CLEAR;
+                        TimeHandlerGas(false, TIMER_NULL);
+                    }
+                } else {
                     mProgressDialog.Dismiss();
                     mWaitCount = 0;
+                    mDataSendFlag = 0;
                     mRequestState = REQUEST_DATA_CLEAR;
                     TimeHandlerGas(false, TIMER_NULL);
+                    TimeHandlerGasEachGroup(false, TIMER_NULL);
                 }
-            }else {
+            } else {
                 mProgressDialog.Dismiss();
                 mWaitCount = 0;
                 mDataSendFlag = 0;
                 mRequestState = REQUEST_DATA_CLEAR;
                 TimeHandlerGas(false, TIMER_NULL);
                 TimeHandlerGasEachGroup(false, TIMER_NULL);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(GasActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
-        } else{
+        } else {
             mProgressDialog.Dismiss();
             mWaitCount = 0;
             mDataSendFlag = 0;
             mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerGas(false, TIMER_NULL);
             TimeHandlerGasEachGroup(false, TIMER_NULL);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(GasActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************
@@ -630,19 +639,26 @@ public class GasActivity extends Activity{
      * @param tKDData
      */
     private void GasControlResult(KDData tKDData){
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            mDataSendFlag = 1;
-        }else{
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                mDataSendFlag = 1;
+            } else {
+                mWaitCount = 0;
+                mRequestState = REQUEST_DATA_CLEAR;
+                TimeHandlerGas(false, TIMER_NULL);
+                mProgressDialog.Dismiss();
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(GasActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            }
+        } else {
             mWaitCount = 0;
             mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerGas(false, TIMER_NULL);
             mProgressDialog.Dismiss();
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(GasActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************

@@ -414,26 +414,34 @@ public class PushSettingActivity extends AppCompatActivity implements View.OnCli
      * @param tKDData
      */
     private void PushSettingStateResult(KDData tKDData){
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            HNMLDataParserPushSetting(tKDData.ReceiveString);
-            mDataSendFlag           = 0;
-            mWaitCount              = 0;
-            mRequestState           = REQUEST_DATA_CLEAR;
-            mProgressDialog.Dismiss();
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                HNMLDataParserPushSetting(tKDData.ReceiveString);
+                mDataSendFlag = 0;
+                mWaitCount = 0;
+                mRequestState = REQUEST_DATA_CLEAR;
+                mProgressDialog.Dismiss();
 
-            TimeHandlerPushSetting(false, TIMER_NULL);
-        } else{
+                TimeHandlerPushSetting(false, TIMER_NULL);
+            } else {
+                mWaitCount = 0;
+                mDataSendFlag = 0;
+                mProgressDialog.Dismiss();
+                mRequestState = REQUEST_DATA_CLEAR;
+                TimeHandlerPushSetting(false, TIMER_NULL);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(PushSettingActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            }
+        } else {
             mWaitCount = 0;
-            mDataSendFlag           = 0;
+            mDataSendFlag = 0;
             mProgressDialog.Dismiss();
             mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerPushSetting(false, TIMER_NULL);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(PushSettingActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************
@@ -444,20 +452,28 @@ public class PushSettingActivity extends AppCompatActivity implements View.OnCli
      * @param tKDData
      */
     private void PushSettingControlResult(KDData tKDData){
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            mDataSendFlag = 1;
-        }else{
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                mDataSendFlag = 1;
+            } else {
+                mWaitCount = 0;
+                mDataSendFlag = 0;
+                mProgressDialog.Dismiss();
+                mRequestState = REQUEST_DATA_CLEAR;
+                TimeHandlerPushSetting(false, TIMER_NULL);
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(PushSettingActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
+            }
+        } else {
             mWaitCount = 0;
-            mDataSendFlag           = 0;
+            mDataSendFlag = 0;
             mProgressDialog.Dismiss();
             mRequestState = REQUEST_DATA_CLEAR;
             TimeHandlerPushSetting(false, TIMER_NULL);
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(PushSettingActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Main_popup_error_title), getString(R.string.Popup_control_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
-            }
         }
     }
     //**********************************************************************************************

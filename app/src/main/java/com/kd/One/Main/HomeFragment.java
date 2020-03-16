@@ -352,6 +352,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             emsUseListArray.add("Cooling");
         }
 
+        //MARK START : JMH - 2020-03-13 1010의 경우 리스트 조회기능이 없으므로, 해당 리스트가 없는 경우 전기, 가스, 수도 3종류 표시하도록 수정
+        if (emsUseListArray.size() == 0) {
+            emsUseListArray.add("Electricity");
+            emsUseListArray.add("Gas");
+            emsUseListArray.add("Water");
+        }
+        //MARK END
+
         if (emsUseListArray.size() > 0){
             if (emsUseListArray.get(0).equals("Electricity")){
                 mTxtCategory.setText("전기");

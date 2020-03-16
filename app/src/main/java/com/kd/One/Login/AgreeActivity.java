@@ -23,6 +23,7 @@ import com.kd.One.R;
 public class AgreeActivity extends Activity {
     //**********************************************************************************************
     private CustomPopupBasic    mCustomPopup;
+    private TextView            mAgreeTxtMainTitle;
     private TextView            mAgreeTxtTab01;
     private TextView            mAgreeTxtTab02;
     private LinearLayout        mAgreeLinTab01;
@@ -66,6 +67,7 @@ public class AgreeActivity extends Activity {
         mAgreeLinPersonalInfo = (LinearLayout)findViewById(R.id.linear_agree_personal_info);
         mAgreeTxtTitle  = (TextView)findViewById(R.id.Agree_Txt_title);
         mAgreeLinVisible = (LinearLayout)findViewById(R.id.linear_agree_tab_visible);
+        mAgreeTxtMainTitle = (TextView)findViewById(R.id.Agree_Txt_main_title);
         //******************************************************************************************
 
         //******************************************************************************************
@@ -81,6 +83,7 @@ public class AgreeActivity extends Activity {
 
         if (getIntent().hasExtra("mode")){
             if (getIntent().getStringExtra("mode").equals("tab01")){
+                mAgreeTxtMainTitle.setText(R.string.Agree_popup_service);
                 mAgreeLinTab01.setVisibility(View.VISIBLE);
                 mAgreeLinTab02.setVisibility(View.INVISIBLE);
                 mAgreeTxtTab01.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -101,6 +104,7 @@ public class AgreeActivity extends Activity {
 //                        .load();
 //                mAgreeWebView.loadUrl("file:///android_asset/home_tok_service_html.html");
             }else{
+                mAgreeTxtMainTitle.setText(R.string.Agree_popup_personal_info);
                 mAgreeLinTab01.setVisibility(View.INVISIBLE);
                 mAgreeLinTab02.setVisibility(View.VISIBLE);
                 mAgreeTxtTab01.setTextColor(getResources().getColor(R.color.colorBlack));

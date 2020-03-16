@@ -514,18 +514,20 @@ public class ComplexActivity extends Activity {
         mProgressDialog.Dismiss();
         TimeHandlerComplex(false, TIMER_NULL);
 
-        if(tKDData.Result.equals(Constants.HNML_RESULT_OK)){
-            if(mCustomPopup != null) {
-                mCustomPopup.dismiss();
-                mCustomPopup = null;
-            }
-            ComplexParser(tKDData.ReceiveString);
-        }else{
-            if(mCustomPopup == null) {
-                mCustomPopup = new CustomPopupBasic(ComplexActivity.this, R.layout.popup_basic_onebutton,
-                        getString(R.string.Complex_popup_error_title), getString(R.string.Complex_popup_error_contents),
-                        mPopupListenerOK);
-                mCustomPopup.show();
+        if(tKDData != null) {
+            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                if (mCustomPopup != null) {
+                    mCustomPopup.dismiss();
+                    mCustomPopup = null;
+                }
+                ComplexParser(tKDData.ReceiveString);
+            } else {
+                if (mCustomPopup == null) {
+                    mCustomPopup = new CustomPopupBasic(ComplexActivity.this, R.layout.popup_basic_onebutton,
+                            getString(R.string.Complex_popup_error_title), getString(R.string.Complex_popup_error_contents),
+                            mPopupListenerOK);
+                    mCustomPopup.show();
+                }
             }
         }
     }

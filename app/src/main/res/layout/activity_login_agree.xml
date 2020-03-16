@@ -35,6 +35,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/Agree_Txt_main_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -144,6 +145,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
                     android:textColor="@color/colorBlack"
+                    android:visibility="gone"
                     android:text="@string/Agree_sevice_text_title"/>
 
                 <TextView
@@ -166,6 +168,7 @@
                     android:gravity="center"
                     android:textSize="18dp"
                     android:textColor="@color/colorBlack"
+                    android:visibility="gone"
                     android:text="@string/Agree_personal_info_title"/>
 
                 <TextView
