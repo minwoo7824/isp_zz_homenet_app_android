@@ -507,6 +507,7 @@ public class VisitorEachActivity extends Activity {
             }
         } else {
             mProgressDialog.Dismiss();
+            Log.e("VisitorEachActivity", "VisitorEachResult tKDData Null");
         }
     }
     //**********************************************************************************************

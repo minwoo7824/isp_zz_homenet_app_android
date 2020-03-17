@@ -649,6 +649,12 @@ public class MemberActivity extends Activity {
                 mCustomPopup.dismiss();
                 mCustomPopup = null;
                 mPopupStatus = POPUP_NULL;
+
+                // MARK START : JMH -2020-03-16 PUSH 지원하지 않는 현장의 경우 기존 스마트폰에 저장된 PUSH 값 참조하여 메뉴 노출되는 이슈 -> 로그아웃 푸시 값 초기화 하도록 수정
+                // Default : 푸시 설정 표시하지 않음
+                mLocalConfig.remove(Constants.SAVE_DATA_USE_PUSH);
+                // MARK END
+
                 LogoutRequest();
             }else if(mPopupStatus == POPUP_WITHDRAWAL){
 
@@ -667,6 +673,12 @@ public class MemberActivity extends Activity {
                 mCustomPopup.dismiss();
                 mCustomPopup = null;
                 mPopupStatus = POPUP_NULL;
+
+                // MARK START : JMH -2020-03-16 PUSH 지원하지 않는 현장의 경우 기존 스마트폰에 저장된 PUSH 값 참조하여 메뉴 노출되는 이슈 -> 회원 탈퇴시 푸시 값 초기화 하도록 수
+                // Default : 푸시 설정 표시하지 않음
+                mLocalConfig.remove(Constants.SAVE_DATA_USE_PUSH);
+                // MARK END
+
                 WithdrawalRequest();
             }else if(mPopupStatus == POPUP_ERROR){
                 mCustomPopup.dismiss();

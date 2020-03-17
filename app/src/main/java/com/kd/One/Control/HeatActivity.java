@@ -1426,6 +1426,10 @@ public class HeatActivity extends Activity{
         linVisible.setVisibility(View.VISIBLE);
         linearParent.setBackgroundResource(R.drawable.layer_list_shadow_radius_on);
 
+        //MARK START : JMH   2020-03-17 버튼 색상 변경
+        //온수 NONE 상태일 경우 버튼 색상 구분되지 않아 색상 변경함
+        //기존 : background(fafafa), text(b8b8b8) -> 변경 : 활성화 background(ededed), text(b8b8b8), 비활성화 background(fafafa), text(e8e8e8)
+
         if(heating.equals("On")){
             txtHeat.setBackgroundResource(R.drawable.shape_stroke_corner_50dp);
             txtHeat.setBackgroundTintList(null);
@@ -1439,7 +1443,7 @@ public class HeatActivity extends Activity{
                 txtGoOutMode.setVisibility(View.INVISIBLE);
             }
         }else{
-            txtHeat.setBackgroundTintList(getResources().getColorStateList(R.color.colorfafafa));
+            txtHeat.setBackgroundTintList(getResources().getColorStateList(R.color.colorededed));
             txtHeat.setTextColor(getResources().getColor(R.color.colorb8b8b8));
             swhControl.setChecked(false);
             txtGoOutMode.setVisibility(View.INVISIBLE);
@@ -1448,7 +1452,7 @@ public class HeatActivity extends Activity{
         }
 
         if(hotWater.equals("None")){
-            txtHotWater.setBackgroundTintList(getResources().getColorStateList(R.color.colorfefefe));
+            txtHotWater.setBackgroundTintList(getResources().getColorStateList(R.color.colorfafafa));
             txtHotWater.setTextColor(getResources().getColor(R.color.colore8e8e8));
             txtHotWater.setSelected(false);
         }else if(hotWater.equals("On")){
@@ -1456,7 +1460,7 @@ public class HeatActivity extends Activity{
             txtHotWater.setBackgroundTintList(null);
             txtHotWater.setTextColor(getResources().getColor(R.color.colorPrimary));
         }else{
-            txtHotWater.setBackgroundTintList(getResources().getColorStateList(R.color.colorfafafa));
+            txtHotWater.setBackgroundTintList(getResources().getColorStateList(R.color.colorededed));
             txtHotWater.setTextColor(getResources().getColor(R.color.colorb8b8b8));
         }
 
@@ -1468,9 +1472,11 @@ public class HeatActivity extends Activity{
             txtGoOutMode.setText("외출중");
             swhControl.setChecked(true);
         }else{
-            txtMode.setBackgroundTintList(getResources().getColorStateList(R.color.colorfafafa));
+            txtMode.setBackgroundTintList(getResources().getColorStateList(R.color.colorededed));
             txtMode.setTextColor(getResources().getColor(R.color.colorb8b8b8));
         }
+
+        //MARK END
 
         final LinearLayout finalLinVisible = linVisible;
         final LinearLayout finalLinearParent = linearParent;

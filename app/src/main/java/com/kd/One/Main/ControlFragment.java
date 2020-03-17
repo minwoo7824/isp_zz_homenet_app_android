@@ -436,12 +436,17 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
 
         if(tKDData != null) {
             if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
-                MainInfoParser(tKDData.ReceiveString);
-                if (mMyGlobal.GlobalDeviceList.size() == 0) {
-                    mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
-                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                            mPopupListenerOK);
-                    mCustomPopup.show();
+                if (tKDData.ReceiveString != null) {
+
+                    MainInfoParser(tKDData.ReceiveString);
+                    if (mMyGlobal.GlobalDeviceList.size() == 0) {
+                        mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
+                                getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                                mPopupListenerOK);
+                        mCustomPopup.show();
+                    }
+                } else {
+                    mProgressDialog.Dismiss();
                 }
             } else {
                 mProgressDialog.Dismiss();

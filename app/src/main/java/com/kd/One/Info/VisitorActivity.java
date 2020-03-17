@@ -185,7 +185,7 @@ public class VisitorActivity extends Activity{
 
         //******************************************************************************************
 
-        mProgressDialog.Show(getString(R.string.progress_request));
+        //mProgressDialog.Show(getString(R.string.progress_request));
     }
     //**********************************************************************************************
 
@@ -390,6 +390,9 @@ public class VisitorActivity extends Activity{
      * @breif visitor list request
      */
     public void VisitorListRequest(){
+
+        mProgressDialog.Show(getString(R.string.progress_request));
+
         mWaitCount          = 0;
         mRequestState       = REQUEST_DATA_SEND_WAIT;
         TimeHandlerVisitor(true, TIMER_REQUEST);

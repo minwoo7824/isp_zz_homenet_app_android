@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,6 +109,8 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
 
 
         if (null != mLocalConfig.getStringValue(Constants.SAVE_DATA_USE_PUSH)) {
+
+            Log.e("InfoFragment activity", "UsePush : " + mLocalConfig.getStringValue(Constants.SAVE_DATA_USE_PUSH));
             if (mLocalConfig.getStringValue(Constants.SAVE_DATA_USE_PUSH).equals("Y")) {
                 mInfoLinVisitorRecord.setVisibility(View.VISIBLE);
             } else {

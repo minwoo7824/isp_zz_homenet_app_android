@@ -685,10 +685,6 @@ public class IntroActivity extends Activity {
 //                            if (test != null && test.equals("Yes")){
 //                                Log.i("tag","test : " + tConvert);
 //                            }
-                            // MARK START : JMH -2020-03-16 PUSH 지원하지 않는 현장의 경우 기존 스마트폰에 저장된 PUSH 값 참조하여 메뉴 노출되는 이슈 -> 메 로그인시 푸시 값 초기화 하도록 수정
-                            // Default : 푸시 설정 표시하지 않음
-                            mLocalConfig.remove(Constants.SAVE_DATA_USE_PUSH);
-                            // MARK END
 
                             if(tName.equals("PhoneCertify")){
                                 tName = "";
