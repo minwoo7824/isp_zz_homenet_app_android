@@ -9,12 +9,10 @@ android {
         applicationId "com.kyungdong.kdhomenet"// "com.kdone.hometok"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 7
+        versionCode 8
         versionName "3.00.00"
         multiDexEnabled true
-        ndk {
-            abiFilters "armeabi-v7a", "x86", "arm64"
-        }
+
         dexOptions {
             javaMaxHeapSize "4g"
         }
@@ -53,11 +51,6 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-
-    sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDirs "src/main/libs"
     }
 
     useLibrary 'org.apache.http.legacy'
