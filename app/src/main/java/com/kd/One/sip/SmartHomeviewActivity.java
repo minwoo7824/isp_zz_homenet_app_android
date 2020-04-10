@@ -1130,9 +1130,34 @@ public class SmartHomeviewActivity extends AppCompatActivity {
             strAuthpassword       = SIPStack.generalPhoneNumber;
             strAuthpassword     = mLocalConfig.getStringValue(Constants.SAVE_DATA_NABLE_PASSWORD);
 
-            strServerHost     = SIPStack.SERVER_IP;
-            strServerDomain       = SIPStack.SERVER_IP;
-            serverPort       = SIPStack.SERVER_PORT;
+
+            // MARK START : JMH - 2020.04.07
+            // 로그인시 서버에서 내려주는 sip ip/port로 설정하도록 수정
+
+            String strCallIP = mLocalConfig.getStringValue(Constants.SAVE_DATA_NABLE_CALL_IP);
+            String strCallPort = mLocalConfig.getStringValue(Constants.SAVE_DATA_NABLE_CALL_PORT);
+            int callPort = SIPStack.SERVER_PORT;
+
+            if (strCallIP == null) {
+                strCallIP = SIPStack.SERVER_IP;
+            }
+
+            if (strCallPort == null) {
+                callPort = SIPStack.SERVER_PORT;
+            } else {
+                try {
+                    callPort = Integer.parseInt(strCallPort);
+                }catch (Exception e){
+                    callPort = SIPStack.SERVER_PORT;
+                }
+
+            }
+
+            strServerHost     = strCallIP;//SIPStack.SERVER_IP;
+            strServerDomain   = strCallIP;//SIPStack.SERVER_IP;
+            serverPort        = callPort;//SIPStack.SERVER_PORT;
+
+            // MARK END
 
             strImsi             = SIPStack.generalPhoneNumber;
             strGeneralPhone       = SIPStack.generalPhoneNumber;

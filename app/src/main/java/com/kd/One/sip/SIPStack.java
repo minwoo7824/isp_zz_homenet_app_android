@@ -231,7 +231,7 @@ public class SIPStack {
     static String ANDROID_API_KEY 					= "AIzaSyDZcNyOPs5iTQ9kGZaF56Ngf4eCQDzMEl0";
     //2015 06 15
 
-    static String SERVER_IP							= "124.111.208.72";
+    static String SERVER_IP							= "124.111.208.92";
     static int SERVER_PORT 							= 5050;//6008;//21010;
 
     static boolean bConstantSpeaker					= true;

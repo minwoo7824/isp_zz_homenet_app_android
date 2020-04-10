@@ -12,8 +12,8 @@ public final class CommonUtilities {
 //    static final String SERVER_URL = "http://192.168.27.195:8080/";
 
 
-    static  String SERVER_IP = "124.111.208.78";
-    static  int SERVER_PORT	= 21010;
+    static  String SERVER_IP = "124.111.208.92";
+    static  int SERVER_PORT	= 5050;
     /**
      * Google API project id registered to use GCM.
      */

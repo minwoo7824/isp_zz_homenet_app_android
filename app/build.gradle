@@ -9,7 +9,7 @@ android {
         applicationId "com.kyungdong.kdhomenet"// "com.kdone.hometok"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 8
+        versionCode 9
         versionName "3.00.00"
         multiDexEnabled true
 
