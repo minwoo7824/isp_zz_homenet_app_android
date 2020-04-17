@@ -119,6 +119,8 @@
     <string name="Find_popup_phone_input">핸드폰 번호를 입력해주십시오.</string>
 
     <!-- 인증번호 창-->
+    <string name="Certify_textbox_certify_title">고객님 세대의 월패드로 인증번호를 전송해주세요.\n인증번호를 입력해주세요.</string>
+    <string name="Certify_textbox_certify_sub">※ 전송 버튼을 누르면 세대 월패드로 인증번호가 전송됩니다.\n월패드에서 수신된 인증번호를 입력 후 인증완료 해주세요.</string>
     <string name="Certify_textbox_certify_hint">인증번호</string>
     <string name="Certify_btn_complete">인증완료</string>
     <string name="Certify_btn_send">전송</string>

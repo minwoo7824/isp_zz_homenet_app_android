@@ -435,27 +435,30 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
         TimeHandlerMain(false, TIMER_NULL);
 
         if(tKDData != null) {
-            if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
-                if (tKDData.ReceiveString != null) {
+            if (tKDData.Result != null) {
 
-                    MainInfoParser(tKDData.ReceiveString);
-                    if (mMyGlobal.GlobalDeviceList.size() == 0) {
+                if (tKDData.Result.equals(Constants.HNML_RESULT_OK)) {
+                    if (tKDData.ReceiveString != null) {
+
+                        MainInfoParser(tKDData.ReceiveString);
+                        if (mMyGlobal.GlobalDeviceList.size() == 0) {
+                            mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
+                                    getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
+                                    mPopupListenerOK);
+                            mCustomPopup.show();
+                        }
+                    } else {
+                        mProgressDialog.Dismiss();
+                    }
+                } else {
+                    mProgressDialog.Dismiss();
+
+                    if (mCustomPopup == null) {
                         mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
                                 getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
                                 mPopupListenerOK);
                         mCustomPopup.show();
                     }
-                } else {
-                    mProgressDialog.Dismiss();
-                }
-            } else {
-                mProgressDialog.Dismiss();
-
-                if (mCustomPopup == null) {
-                    mCustomPopup = new CustomPopupBasic(getActivity(), R.layout.popup_basic_onebutton,
-                            getString(R.string.Main_popup_error_title), getString(R.string.Popup_info_error_contents),
-                            mPopupListenerOK);
-                    mCustomPopup.show();
                 }
             }
         } else {
@@ -477,52 +480,63 @@ public class ControlFragment extends Fragment implements View.OnClickListener {
                 while(tEventType != XmlPullParser.END_DOCUMENT){
                     String name = tParser.getName();
 
-                    switch(tEventType){
-                        case    XmlPullParser.START_TAG:
-                            tName = name;
-                            if(name.equals("Data")){
-                                tName = tParser.getAttributeValue(null, "name");
-                            }
-                            break;
-                        case    XmlPullParser.TEXT:
-                            String tConvert = tParser.getText().trim();
-                            if(tName.equals("DeviceType")){
-                                tName = "";
-                                if(tConvert.length() == 0){
-                                    mMyGlobal.GlobalDeviceList.add("");
-                                }else{
-                                    mMyGlobal.GlobalDeviceList.add(tParser.getText().trim());
+                        switch (tEventType) {
+                            case XmlPullParser.START_TAG:
+                                tName = name;
+                                if (name.equals("Data")) {
+                                    tName = tParser.getAttributeValue(null, "name");
+                                }
+                                break;
+                            case XmlPullParser.TEXT:
+                                String tConvert = tParser.getText().trim();
+                                if (tName.equals("DeviceType")) {
+                                    tName = "";
+                                    if (tConvert.length() == 0) {
+                                        mMyGlobal.GlobalDeviceList.add("");
+                                    } else {
+                                        mMyGlobal.GlobalDeviceList.add(tParser.getText().trim());
 
-                                    if (tParser.getText().trim().equals(Constants.DEVICE_GAS)){
-                                        mControlLinGas.setVisibility(View.VISIBLE);
-                                    }else if (tParser.getText().trim().equals(Constants.DEVICE_VENTILATION)){
-                                        mControlLinVentilation.setVisibility(View.VISIBLE);
-                                    }else if (tParser.getText().trim().equals(Constants.DEVICE_BOILER)){
-                                        mControlLinHeat.setVisibility(View.VISIBLE);
-                                    }else if (tParser.getText().trim().equals(Constants.DEVICE_LIGHT)){
-                                        mControlLinLight.setVisibility(View.VISIBLE);
-                                    }else if (tParser.getText().trim().equals(Constants.DEVICE_STANDINGPOWER)){
-                                        mControlLinPower.setVisibility(View.VISIBLE);
+                                        if (tParser.getText().trim().equals(Constants.DEVICE_GAS)) {
+                                            mControlLinGas.setVisibility(View.VISIBLE);
+                                        } else if (tParser.getText().trim().equals(Constants.DEVICE_VENTILATION)) {
+                                            mControlLinVentilation.setVisibility(View.VISIBLE);
+                                        } else if (tParser.getText().trim().equals(Constants.DEVICE_BOILER)) {
+                                            mControlLinHeat.setVisibility(View.VISIBLE);
+                                        } else if (tParser.getText().trim().equals(Constants.DEVICE_LIGHT)) {
+                                            mControlLinLight.setVisibility(View.VISIBLE);
+                                        } else if (tParser.getText().trim().equals(Constants.DEVICE_STANDINGPOWER)) {
+                                            mControlLinPower.setVisibility(View.VISIBLE);
+                                        }
                                     }
                                 }
-                            }
-                            break;
-                        case    XmlPullParser.END_TAG:
-                            break;
-                        default:
-                            break;
-                    }
-                    tEventType = tParser.next();
+                                break;
+                            case XmlPullParser.END_TAG:
+                                break;
+                            default:
+                                break;
+                        }
+                        tEventType = tParser.next();
+
                 }
             }catch (Exception e){
                 e.printStackTrace();
                 Log.e("HNML", "Main info Parser Error");
             }
 
-            if(mLocalConfig.getStringValue(Constants.SAVE_DATA_NABLE_USE).equals("true")){
-                mMyGlobal.GlobalDeviceList.add(Constants.DEVICE_HOMEVIEW);
+            try {
+                String nableUse = mLocalConfig.getStringValue(Constants.SAVE_DATA_NABLE_USE);
+
+                if (nableUse != null) {
+                    if (nableUse.equals("true")) {
+                        mMyGlobal.GlobalDeviceList.add(Constants.DEVICE_HOMEVIEW);
+                    }
+                }
+                mMyGlobal.GlobalDeviceList.add(Constants.DEVICE_OUTMODE);
+
+            }catch (Exception e) {
+                e.printStackTrace();
+                Log.e("MainInfoParser", "Main info Parser nableUse Error");
             }
-            mMyGlobal.GlobalDeviceList.add(Constants.DEVICE_OUTMODE);
         }
     }
 
